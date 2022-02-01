@@ -107,6 +107,8 @@
   background-color: var(--Background_3);
   overflow-x: hidden;
   margin-top: 5rem;
+  color: var(--Background_1);
+  text-decoration: none;
   }
 
   .sidebar header{
