@@ -1,3 +1,9 @@
+:root{
+  --Background_1 : #F6F5F5;
+  --Background_2 : #EE6F57;
+  --Background_3 : #1F3C88;
+  --Background_4 : #070D59;
+}
 *{
     padding: 0;
     margin: 0;
@@ -9,7 +15,7 @@
     font-family: montserrat;
   }
   nav{
-    background: #052cdb;
+    background: var(--Background_4);
     height: 80px;
     margin-top: -5rem;
     width: 100%;
@@ -39,7 +45,7 @@
     text-transform: uppercase;
   }
   nav a.active,a:hover{
-    background: #768beb;
+    background: var(--Background_3);
     transition: .5s;
   }
 
@@ -84,7 +90,7 @@
     align-items: center;
     margin-top : 10%;
     flex-flow: column wrap;
-    background-color: antiquewhite;
+    background-color: var(--Background_2);
     border-radius: 2rem;
 }
 .content{
@@ -98,7 +104,7 @@
   z-index: 0;
   top: 0;
   left: 0;
-  background-color: rgb(152, 233, 226);
+  background-color: var(--Background_3);
   overflow-x: hidden;
   margin-top: 5rem;
   }
@@ -113,7 +119,7 @@
   }
 
   .result{
-      background-color: #4e22b4;
+      background-color: var(--Background_1);
       width: 80%;
       margin-top: 5rem;
       margin-left: 20%;
@@ -123,9 +129,11 @@
   }
 
   .patho{
-      background-color: antiquewhite;
+      background-color: var(--Background_2);
       min-width: 300px;
       min-height: 100px;
-      margin: 15px;;
+      margin: 15px;
+      color: black;
+      text-decoration: none;
   }
 
