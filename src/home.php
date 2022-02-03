@@ -14,7 +14,6 @@
     <div class="container">
 
     <!-- Navigation -->
-    <?php include_once('header.php'); ?>
 
     <!-- Inclusion du formulaire de connexion -->
     <?php include_once('login.php'); ?>
@@ -31,7 +30,6 @@
             <?php endforeach ?>
         <?php endif; ?>
     </div>
-
-    <?php include_once('footer.php'); ?>
+    
 </body>
 </html>
