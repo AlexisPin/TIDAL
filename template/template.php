@@ -9,69 +9,10 @@
     <title>Document</title>
 </head>
 <body>
-   <nav>
-    <label class="logo">TIDAL</label>
-    <ul>
-      <li><a class="active" href="index.html">Acceuil</a></li>
-      <li><a href="#">Recherche avancée</a></li>
-      <li><a href="src/signup.html">Connexion</a></li>
-      <li><a href="src/bibliographie.html">Bibliographie</a></li>
-    </ul>
-  </nav>
 
-  <div class="sidebar"></a> <a href="#">
-    <div class="patho">
-      <h4>Nom_Patho</h4>
-      <h5>meridien</h5>
-      <p>Description</p>
-    </div>
-  </a> <a href="#">
-    <div class="patho">
-      <h4>Nom_Patho</h4>
-      <h5>meridien</h5>
-      <p>Description</p>
-    </div>
-  </a> <a href="#">
-    <div class="patho">
-      <h4>Nom_Patho</h4>
-      <h5>meridien</h5>
-      <p>Description</p>
-    </div>
-  </a> <a href="#">
-    <div class="patho">
-      <h4>Nom_Patho</h4>
-      <h5>meridien</h5>
-      <p>Description</p>
-    </div>
-  </a> <a href="#">
-    <div class="patho">
-      <h4>Nom_Patho</h4>
-      <h5>meridien</h5>
-      <p>Description</p>
-    </div>
-  </a> <a href="#">
-    <div class="patho">
-      <h4>Nom_Patho</h4>
-      <h5>meridien</h5>
-      <p>Description</p>
-    </div>
-  </a> <a href="#">
-    <div class="patho">
-      <h4>Nom_Patho</h4>
-      <h5>meridien</h5>
-      <p>Description</p>
-    </div>
-  </a> <a href="#">
-    <div class="patho">
-      <h4>Nom_Patho</h4>
-      <h5>meridien</h5>
-      <p>Description</p>
-    </div>
-  </a>
-</div>
-</body>
-</html>
+    <?= $content ?>
 
+  <div class="sidebar">
     <header>Filtres</header>
     <div class="meridien">
       <h3>Meridien</h3>
@@ -150,7 +91,7 @@
         <p>Description</p>
       </div>
     </a> <a href="#">
-      <div class="patho">
+    <div class="patho">
         <h4>Nom_Patho</h4>
         <h5>meridien</h5>
         <p>Description</p>
@@ -179,15 +120,6 @@
         <h5>meridien</h5>
         <p>Description</p>
       </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a>
-
-    
   </div>
 </body>
-</html>  
+</html> 
