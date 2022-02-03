@@ -9,7 +9,6 @@ $users = [
     ],
 ];
 
-
 $recipes = [
     [
         'title' => 'Cassoulet',
