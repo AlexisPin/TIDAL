@@ -1,31 +1,33 @@
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
 :root{
   --Background_1 : #F6F5F5;
   --Background_2 : #EE6F57;
   --Background_3 : #1F3C88;
   --Background_4 : #070D59;
 }
-*{
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-  }
+
   body{
-    font-family: montserrat;
+    font-family: sans-serif;
   }
   nav{
     background: var(--Background_4);
-    height: 80px;
-    margin-top: -5rem;
+    height: 5rem;
     width: 100%;
     position: fixed;
+    border : solid darkblue 2px;
   }
   label.logo{
     color: white;
-    font-size: 35px;
+    font-size: 2rem;
     line-height: 80px;
-    padding: 0 100px;
+    padding: 0 1rem;
     font-weight: bold;
   }
   nav ul{
@@ -52,7 +54,7 @@
   @media (max-width: 952px){
     label.logo{
       font-size: 30px;
-      padding-left: 50px;
+      padding-left: 3rem;
     }
     nav ul li a{
       font-size: 16px;
@@ -98,43 +100,60 @@
 }
 
 .sidebar{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow : column wrap;
   height: 100%;
   width: 20%;
   position: fixed;
-  z-index: 0;
-  top: 0;
-  left: 0;
   background-color: var(--Background_3);
   overflow-x: hidden;
   margin-top: 5rem;
   color: var(--Background_1);
-  text-decoration: none;
+
   }
 
-  .sidebar header{
+  .sidebar h1{
     font-size: 28px;
     color: white;
     line-height: 70px;
-    text-align: center;
     user-select: none;
     font-family: 'Montserrat', sans-serif;
+  }
+
+  .sidebar h3{
+    padding: 0.5rem;
   }
 
   .result{
       background-color: var(--Background_1);
       width: 80%;
-      margin-top: 5rem;
       margin-left: 20%;
       display: flex;
       flex-flow: row wrap;
-      padding: 7.5px;
+      padding : 1vh;
+  }
+
+  .result a {
+    transition: ease-in-out 0.3;
+    border-radius: 1rem;
+    background-color: rgb(255, 255, 255);
+  }
+  .result a:hover {
+    background-color: rgb(138, 54, 54);
   }
 
   .patho{
+      display : flex;
+      align-items: center;
+      justify-content: center;
+      flex-flow : column wrap;
       background-color: var(--Background_2);
       min-width: 300px;
       min-height: 100px;
       margin: 15px;
       color: black;
       text-decoration: none;
+      border-radius: 1rem;
   }
