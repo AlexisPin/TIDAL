@@ -14,14 +14,15 @@
     <div class="container">
 
     <!-- Navigation -->
+    <?php include_once('header.php'); ?>
 
     <!-- Inclusion du formulaire de connexion -->
     <?php include_once('login.php'); ?>
-        <h1>Site de Recettes !</h1>
+        <h1>Je</h1>
 
         <!-- Si l'utilisateur existe, on affiche les recettes -->
         <?php if(isset($loggedUser)): ?>
-            <?php foreach(get_recipes($recipes, $limit) as $recipe) : ?>
+            <?php foreach($recipes as $recipe) : ?>
                 <article>
                     <h3><?php echo $recipe['title']; ?></h3>
                     <div><?php echo $recipe['recipe']; ?></div>
@@ -30,6 +31,7 @@
             <?php endforeach ?>
         <?php endif; ?>
     </div>
-    
+
+    <?php include_once('footer.php'); ?>
 </body>
 </html>

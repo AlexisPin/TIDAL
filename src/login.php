@@ -1,8 +1,46 @@
 <?php
 
+
+$users = [
+    [
+    'Nom' => 'Mickaël Andrieu',
+    'email' => 'mickael.andrieu@exemple.com',
+    'password' =>  'S3cr3t',
+    ],
+];
+
+
+$recipes = [
+    [
+        'title' => 'Cassoulet',
+        'recipe' => '',
+        'author' => 'mickael.andrieu@exemple.com',
+        'is_enabled' => true,
+    ],
+    [
+        'title' => 'Couscous',
+        'recipe' => '',
+        'author' => 'mickael.andrieu@exemple.com',
+        'is_enabled' => false,
+    ],
+    [
+        'title' => 'Escalope milanaise',
+        'recipe' => '',
+        'author' => 'mathieu.nebra@exemple.com',
+        'is_enabled' => true,
+    ],
+    [
+        'title' => 'Salade Romaine',
+        'recipe' => '',
+        'author' => 'laurene.castor@exemple.com',
+        'is_enabled' => false,
+    ],
+];
+
 // Validation du formulaire
 if (isset($_POST['email']) &&  isset($_POST['password'])) {
     foreach ($users as $user) {
+        echo $user['email']. $user['password'];
         if (
             $user['email'] === $_POST['email'] &&
             $user['password'] === $_POST['password']
@@ -13,7 +51,7 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
         } else {
             $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
                 $_POST['email'],
-                $_POST['password']
+                $_POST['password'],
             );
         }
     }
