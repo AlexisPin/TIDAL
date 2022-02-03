@@ -1,13 +1,13 @@
 <?php
 
-   try {
-      $dbh = new PDO('sqlite:example.db');
-   } catch (PDOException $e) {
-      echo $e->getCode() . ' ' . $e->getMessage();
-   }
+   // try {
+   //    $dbh = new PDO('sqlite:example.db');
+   // } catch (PDOException $e) {
+   //    echo $e->getCode() . ' ' . $e->getMessage();
+   // }
    
-   $sql = "SELECT * FROM Patho WHERE myField='value';";
-   $dbh->query( $sql );
+   // $sql = "SELECT * FROM Patho WHERE myField='value';";
+   // $dbh->query( $sql );
 
    require 'elements/header.php';
 
