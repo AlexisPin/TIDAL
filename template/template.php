@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <?= $content ?>
+    <?= $nav_bar ?>
 
   <div class="sidebar">
     <header>Filtres</header>
