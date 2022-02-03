@@ -1,38 +1,10 @@
 <?php
 
-
 $users = [
     [
     'Nom' => 'Mickaël Andrieu',
     'email' => 'mickael.andrieu@exemple.com',
     'password' =>  'S3cr3t',
-    ],
-];
-
-$recipes = [
-    [
-        'title' => 'Cassoulet',
-        'recipe' => '',
-        'author' => 'mickael.andrieu@exemple.com',
-        'is_enabled' => true,
-    ],
-    [
-        'title' => 'Couscous',
-        'recipe' => '',
-        'author' => 'mickael.andrieu@exemple.com',
-        'is_enabled' => false,
-    ],
-    [
-        'title' => 'Escalope milanaise',
-        'recipe' => '',
-        'author' => 'mathieu.nebra@exemple.com',
-        'is_enabled' => true,
-    ],
-    [
-        'title' => 'Salade Romaine',
-        'recipe' => '',
-        'author' => 'laurene.castor@exemple.com',
-        'is_enabled' => false,
     ],
 ];
 
