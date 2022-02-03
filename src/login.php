@@ -5,49 +5,38 @@ $users = [
     [
     'Nom' => 'Mickaël Andrieu',
     'email' => 'mickael.andrieu@exemple.com',
-    'password' =>  'S3cr3t',
+    'password' =>  'Secret',
     ],
 ];
 
 
-$recipes = [
-    [
-        'title' => 'Cassoulet',
-        'recipe' => '',
-        'author' => 'mickael.andrieu@exemple.com',
-        'is_enabled' => true,
-    ],
-    [
-        'title' => 'Couscous',
-        'recipe' => '',
-        'author' => 'mickael.andrieu@exemple.com',
-        'is_enabled' => false,
-    ],
-    [
-        'title' => 'Escalope milanaise',
-        'recipe' => '',
-        'author' => 'mathieu.nebra@exemple.com',
-        'is_enabled' => true,
-    ],
-    [
-        'title' => 'Salade Romaine',
-        'recipe' => '',
-        'author' => 'laurene.castor@exemple.com',
-        'is_enabled' => false,
-    ],
-];
 
 // Validation du formulaire
 if (isset($_POST['email']) &&  isset($_POST['password'])) {
     foreach ($users as $user) {
-        echo $user['email']. $user['password'];
         if (
             $user['email'] === $_POST['email'] &&
             $user['password'] === $_POST['password']
         ) {
-            $loggedUser = [
-                'email' => $user['email'],
-            ];
+            // retenir l'email de la personne connectée pendant 1 an
+            setcookie(
+                'Username',
+                $user['Name'],
+                [
+                    'expires' => time() + 5*60,
+                    'secure' => true,
+                    'httponly' => true,
+                ]
+            );
+            setcookie(
+                'Email',
+                $user['email'],
+                [
+                    'expires' => time() + 5*60,
+                    'secure' => true,
+                    'httponly' => true,
+                ]
+                );
         } else {
             $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
                 $_POST['email'],
@@ -85,6 +74,6 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
 -->
 <?php else: ?>
     <div class="alert alert-success" role="alert">
-        Bonjour <?php echo $loggedUser['email']; ?> et bienvenue sur le site !
+    <meta http-equiv="refresh" content="1; url=../index.html" />
     </div>
 <?php endif; ?>
