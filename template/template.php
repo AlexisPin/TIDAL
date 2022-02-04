@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <?= $content ?>
+    <?= $nav_bar ?>
 
   <div class="sidebar">
     <header>Filtres</header>
@@ -20,11 +20,12 @@
       <li><a href="#">+ Ren Mai</a></li>
       <li><a href="#">+ Rein</a></li>
     </div>
-    <div class="type"></div>
-      <h3>Type</h3>
+    <div class="type">
+    <h3>Type</h3>
       <li><a href="#">+ Méridien</a></li>
       <li><a href="#">+ Organe</a></li>
       <li><a href="#">+ Luo</a></li>
+    </div>
     <div class="caracteristique">
       <h3>Caracteristique </h3>
       <li><a href="#">+ Pleins</a></li>

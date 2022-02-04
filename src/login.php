@@ -1,6 +1,5 @@
 <?php
 
-
 $users = [
     [
     'Nom' => 'Mickaël Andrieu',

@@ -9,9 +9,8 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <div class="container">
+    <?php include_once('nav_bar.php'); ?>
 
-    <!-- Navigation -->
-    <?php include_once('header.php'); ?>
 
     <!-- Inclusion du formulaire de connexion -->
     <?php include_once('login.php'); ?>
