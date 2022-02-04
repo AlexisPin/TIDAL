@@ -8,7 +8,7 @@ require_once 'config.php';
      $conn = new PDO($dsn);
      
      if($conn){
-      echo "Connecté à $db avec succès!";
+      echo "<script>console.log(\"Connecté à $db avec succès!\")</script>";
      }
   }catch (PDOException $e){
      echo $e->getMessage();

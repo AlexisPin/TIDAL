@@ -7,12 +7,10 @@
    $pathos->execute();
 
    while ($row = $pathos->fetch(PDO::FETCH_ASSOC)) {
-      echo $row['desc'];
-      var_dump($row);
-      echo " ";
+      //echo $row['desc'];
+      //echo " ";
    }
-   $conn=null;
-   
+  
 
    require 'elements/header.php';
 
@@ -21,16 +19,16 @@
    $Smarty = new Smarty();
    $Smarty->setTemplateDir(MAIN_PATH . '/template');
 
-   echo $_SERVER['REQUEST_URI'];
-
    $uri = $_SERVER['REQUEST_URI'];
    require 'elements/navbar.php';
-   if ($uri == '/filter') {
+   
+   if ($uri == '/?filter') {
    require 'template/filter.php';
-   } elseif ($uri == '/connexion') {
+   } elseif ($uri == '/?connexion') {
    require 'template/home.php';
-   } elseif ($uri == '/search') {
+   } elseif ($uri == '/?search') {
       require 'template/search.php';
       }
 
    require 'elements/footer.php';
+   $conn=null;
