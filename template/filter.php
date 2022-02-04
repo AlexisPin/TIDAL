@@ -1,3 +1,8 @@
+<?php
+   $sql = "SELECT * FROM public.patho;";
+   $pathos = $conn->prepare($sql);
+   $pathos->execute();
+?>
 
   <div class="sidebar">
     <h1>Filtres</h1>
@@ -21,105 +26,15 @@
     </div>
   </div>
 
-<!-- <div class="result">
- {foreach $pathos AS $patho}
+<div class="result">
+  <?php foreach($pathos as $patho): ?>
     <a href="#">
-      <div class="patho">
-        <h4>{$patho.nom}</h4>
-        <h5>{$patho.meridien}</h5>
-        <p>{$patho.description}</p>
-      </div>
-    </a>
-  {/foreach}
-</div> -->
+       <div class="patho">
+         <h4><?= $patho['desc'];?></h4>
+         <p><?= $patho['idp'];?></p>
+         <p><?= $patho['mer'];?></p>
+       </div>
+     </a>
+    <?php endforeach; ?>
+</div>
 
-  <div class="result">
-    <a href="#">
-    <div class="patho">
-      <h4>Nom_Patho</h4>
-      <h5>meridien</h5>
-      <p>Description</p>
-    </div>
-    </a>
-    <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a>
-    <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-    <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-  </div>
-</body>
-</html> 
