@@ -39,18 +39,23 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
         } else {
             $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
                 $_POST['email'],
-                $_POST['password'],
+                $_POST['passwordset'],
             );
         }
     }
 }
-?>
 
+<<<<<<< HEAD
+   //Si utilisateur/trice est non identifié(e), on affiche le formulaire
+
+if(!isset($_COOKIE["Username"])): ?>
+=======
 <!--
    Si utilisateur/trice est non identifié(e), on affiche le formulaire
 -->
 <?php if(!isset($_COOKIE["Username"])): ?>
     <div class="form_connexion">
+>>>>>>> 2dd181b2f01306475b58f70046b062ef813caad2
 <form action="home.php" method="post">
     <!-- si message d'erreur on l'affiche -->
     <?php if(isset($errorMessage)) : ?>
@@ -76,3 +81,7 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
 <?php else: ?>
     <meta http-equiv="refresh" content="1; url=../index.php" />
 <?php endif; ?>
+
+<div>
+<a href="./signup.php">S'inscrire</a> 
+</div>
