@@ -2,21 +2,33 @@
    $sql = "SELECT * FROM public.patho;";
    $pathos = $conn->prepare($sql);
    $pathos->execute();
+   $pathos_data = $pathos->fetchAll();
+
+   $sql = "SELECT * FROM public.meridien;";
+   $meridiens = $conn->prepare($sql);
+   $meridiens->execute();
+   $meridiens_data = $meridiens->fetchAll();
 ?>
 
   <div class="sidebar">
     <h1>Filtres</h1>
     <div class="meridien">
       <h3>Meridien</h3>
-      <li><a href="#">+ Poumon</a></li>
-      <li><a href="#">+ Ren Mai</a></li>
-      <li><a href="#">+ Rein</a></li>
+        <select name="meridien" id="meridien-select">
+        <option value="">--Choisissez un méridien--</option>
+        <?php foreach($meridiens_data as $meridien): ?>
+            <option value="<?=$meridien['nom'];?>"><?=$meridien['nom'];?></option>
+        <?php endforeach; ?>
+        </select>
     </div>
     <div class="type">
     <h3>Type</h3>
-      <li><a href="#">+ Méridien</a></li>
-      <li><a href="#">+ Organe</a></li>
-      <li><a href="#">+ Luo</a></li>
+    <select name="meridien" id="meridien-select">
+        <option value="">--Choisissez un méridien--</option>
+        <?php foreach($meridiens_data as $meridien): ?>
+            <option value="<?=$meridien['nom'];?>"><?=$meridien['nom'];?></option>
+        <?php endforeach; ?>
+        </select>
     </div>
     <div class="caracteristique">
       <h3>Caracteristique </h3>
@@ -27,7 +39,7 @@
   </div>
 
 <div class="result">
-  <?php foreach($pathos as $patho): ?>
+  <?php foreach($pathos_data as $patho): ?>
     <a href="#">
        <div class="patho">
          <h4><?= $patho['desc'];?></h4>
