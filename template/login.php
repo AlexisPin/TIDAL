@@ -2,7 +2,7 @@
 
 $users = [
     [
-    'Nom' => 'Tidal tidal',
+    'Name' => 'Tidal tidal',
     'email' => 'tidal@tidal.tidal',
     'password' =>  'tidal',
     ],
@@ -74,7 +74,5 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
     Si utilisateur/trice bien connectée on affiche un message de succès
 -->
 <?php else: ?>
-    <div class="alert alert-success" role="alert">
     <meta http-equiv="refresh" content="1; url=../index.php" />
-    </div>
 <?php endif; ?>
