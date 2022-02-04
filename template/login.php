@@ -45,9 +45,17 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
     }
 }
 
+<<<<<<< HEAD
    //Si utilisateur/trice est non identifié(e), on affiche le formulaire
 
 if(!isset($_COOKIE["Username"])): ?>
+=======
+<!--
+   Si utilisateur/trice est non identifié(e), on affiche le formulaire
+-->
+<?php if(!isset($_COOKIE["Username"])): ?>
+    <div class="form_connexion">
+>>>>>>> 2dd181b2f01306475b58f70046b062ef813caad2
 <form action="home.php" method="post">
     <!-- si message d'erreur on l'affiche -->
     <?php if(isset($errorMessage)) : ?>
@@ -66,6 +74,7 @@ if(!isset($_COOKIE["Username"])): ?>
     </div>
     <button type="submit" class="btn btn-primary">Envoyer</button>
 </form>
+</div>
 <!-- 
     Si utilisateur/trice bien connectée on affiche un message de succès
 -->
