@@ -7,8 +7,8 @@
    $pathos->execute();
 
    while ($row = $pathos->fetch(PDO::FETCH_ASSOC)) {
-      echo $row['desc'];
-      echo " ";
+      //echo $row['desc'];
+     // echo " ";
    }
   
 
@@ -22,13 +22,13 @@
    $uri = $_SERVER['REQUEST_URI'];
    require 'elements/navbar.php';
    
-   if ($uri == '/?filter') {
+   if ($uri === '/?filter') {
    require 'template/filter.php';
-   } elseif ($uri == '/?connexion') {
+   } elseif ($uri === '/?connexion') {
    require 'template/home.php';
-   } elseif ($uri == '/?search') {
-      require 'template/search.php';
-      }
+   } elseif ($uri === '/?search') {
+   require 'template/search.php';
+   }
 
    require 'elements/footer.php';
    $conn=null;
