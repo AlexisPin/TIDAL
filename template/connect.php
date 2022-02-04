@@ -2,7 +2,7 @@
 
 require_once 'config.php';
 
-  $dsn = "pgsql:host=$host;port=5432;dbname=$db;user=$user;password=$password";
+  $dsn = "pgsql:host=$host;port=5432;dbname=$db;user=$utilisateur;password=$mdp";
 
   try{
      $conn = new PDO($dsn);

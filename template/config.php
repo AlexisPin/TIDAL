@@ -2,6 +2,6 @@
 
 $host= 'localhost';
 $db = 'acudb';
-$user = 'pgtidal';
-$password = 'tidal';
+$utilisateur = 'pgtidal';
+$mdp = 'tidal';
 

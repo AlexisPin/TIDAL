@@ -7,8 +7,8 @@
    $pathos->execute();
 
    while ($row = $pathos->fetch(PDO::FETCH_ASSOC)) {
-      //echo $row['desc'];
-      //echo " ";
+      echo $row['desc'];
+      echo " ";
    }
   
 
