@@ -1,17 +1,34 @@
+<?php
+   $sql = "SELECT * FROM public.patho;";
+   $pathos = $conn->prepare($sql);
+   $pathos->execute();
+   $pathos_data = $pathos->fetchAll();
+
+   $sql = "SELECT * FROM public.meridien;";
+   $meridiens = $conn->prepare($sql);
+   $meridiens->execute();
+   $meridiens_data = $meridiens->fetchAll();
+?>
 
   <div class="sidebar">
     <h1>Filtres</h1>
     <div class="meridien">
       <h3>Meridien</h3>
-      <li><a href="#">+ Poumon</a></li>
-      <li><a href="#">+ Ren Mai</a></li>
-      <li><a href="#">+ Rein</a></li>
+        <select name="meridien" id="meridien-select">
+        <option value="">--Choisissez un méridien--</option>
+        <?php foreach($meridiens_data as $meridien): ?>
+            <option value="<?=$meridien['nom'];?>"><?=$meridien['nom'];?></option>
+        <?php endforeach; ?>
+        </select>
     </div>
     <div class="type">
     <h3>Type</h3>
-      <li><a href="#">+ Méridien</a></li>
-      <li><a href="#">+ Organe</a></li>
-      <li><a href="#">+ Luo</a></li>
+    <select name="meridien" id="meridien-select">
+        <option value="">--Choisissez un méridien--</option>
+        <?php foreach($meridiens_data as $meridien): ?>
+            <option value="<?=$meridien['nom'];?>"><?=$meridien['nom'];?></option>
+        <?php endforeach; ?>
+        </select>
     </div>
     <div class="caracteristique">
       <h3>Caracteristique </h3>
@@ -21,105 +38,15 @@
     </div>
   </div>
 
-<!-- <div class="result">
- {foreach $pathos AS $patho}
+<div class="result">
+  <?php foreach($pathos_data as $patho): ?>
     <a href="#">
-      <div class="patho">
-        <h4>{$patho.nom}</h4>
-        <h5>{$patho.meridien}</h5>
-        <p>{$patho.description}</p>
-      </div>
-    </a>
-  {/foreach}
-</div> -->
+       <div class="patho">
+         <h4><?= $patho['desc'];?></h4>
+         <p><?= $patho['idp'];?></p>
+         <p><?= $patho['mer'];?></p>
+       </div>
+     </a>
+    <?php endforeach; ?>
+</div>
 
-  <div class="result">
-    <a href="#">
-    <div class="patho">
-      <h4>Nom_Patho</h4>
-      <h5>meridien</h5>
-      <p>Description</p>
-    </div>
-    </a>
-    <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a>
-    <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-    <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-    </a> <a href="#">
-      <div class="patho">
-        <h4>Nom_Patho</h4>
-        <h5>meridien</h5>
-        <p>Description</p>
-      </div>
-  </div>
-</body>
-</html> 

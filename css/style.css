@@ -152,9 +152,24 @@ a:hover {
   flex-flow: column wrap;
   background-color: var(--Background_2);
   min-width: 300px;
+  max-width: 300px;
   min-height: 100px;
   margin: 15px;
   color: black;
   text-decoration: none;
+  border-radius: 1rem;
+}
+
+.patho h4 {
+  text-align: center;
+}
+
+.form_connexion {
+  margin: auto;
+  background-color: var(--Background_2);
+  height: 50%;
+  width: 50%;
+  padding-top: 10rem;
+  border: solid burlywood 2px;
   border-radius: 1rem;
 }
