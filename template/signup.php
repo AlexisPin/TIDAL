@@ -4,9 +4,9 @@
 require 'connect.php';
 
 $sql = "SELECT * FROM public.users;";
-$users = $conn->prepare($sql);
+$dbh->beginTransaction();
+$users = $dbh->prepare($sql);
 $users->execute();
-
 
 // Validation du formulaire
 if (isset($_POST["Username"]) && isset($_POST['email']) &&  isset($_POST['password'])) {
@@ -28,13 +28,13 @@ if (isset($_POST["Username"]) && isset($_POST['email']) &&  isset($_POST['passwo
     }
 }
 ?>
-    <h1>Sign up</h1>
+<h1>Sign up</h1>
 <form action="signup.php" method="post">
     <!-- si message d'erreur on l'affiche -->
     <?php if(isset($errorMessage)) : ?>
-        <div class="alert alert-danger" role="alert">
-            <?php echo $errorMessage; ?>
-        </div>
+    <div class="alert alert-danger" role="alert">
+        <?php echo $errorMessage; ?>
+    </div>
     <?php endif; ?>
     <div class="mb-3">
         <label for="Username" class="form-label">Username</label>
@@ -42,7 +42,8 @@ if (isset($_POST["Username"]) && isset($_POST['email']) &&  isset($_POST['passwo
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" placeholder="you@exemple.com">
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help"
+            placeholder="you@exemple.com">
         <div id="email-help" class="form-text"></div>
     </div>
     <div class="mb-3">

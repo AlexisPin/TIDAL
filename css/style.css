@@ -164,12 +164,123 @@ a:hover {
   text-align: center;
 }
 
-.form_connexion {
-  margin: auto;
-  background-color: var(--Background_2);
-  height: 50%;
-  width: 50%;
-  padding-top: 10rem;
+/**************************Formulaire de Connexion******************************/
+.form-container {
+  background: rgb(182, 107, 140);
+  background: radial-gradient(
+    circle,
+    rgba(182, 107, 140, 1) 0%,
+    rgba(26, 106, 200, 1) 100%
+  );
+  width: 50vw;
+  height: 45vh;
   border: solid burlywood 2px;
   border-radius: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: 1em bold;
+}
+
+.connexion-form {
+  display: grid;
+  grid-template-columns: 15vw 10vw 25vw;
+}
+
+.connexion-form input {
+  grid-column: 2 / -1;
+  padding: 5px;
+  margin: 10px;
+  width: 30vw;
+}
+.connexion-form label {
+  grid-column: 1;
+  padding: 5px;
+  margin: 10px;
+}
+
+.submit-btn {
+  grid-column: 2;
+  padding: 10px;
+  background-color: #0d79ddbd;
+  margin: 10px;
+  border: solid 2px blue;
+  border-radius: 5px;
+}
+.submit-btn:hover {
+  padding: 10px;
+  background-color: #0082e6;
+  cursor: pointer;
+}
+
+.connexion-form p {
+  grid-column: 1 / 3;
+  grid-row: 4;
+  padding: 5px;
+  margin: 10px;
+}
+.connexion-form .signup-link {
+  grid-column: 3 / -1;
+  grid-row: 4;
+  padding: 5px;
+  margin: 10px;
+}
+
+.signup-link {
+  grid-column: 1;
+  padding: 10px;
+  background-color: #0d79ddbd;
+  margin: 10px;
+  position: relative;
+  width: 10vw;
+  height: 2.5em;
+  border: solid 2px blue;
+  border-radius: 5px;
+}
+.signup-link a {
+  color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/**************************Barre de recherche******************************/
+
+.search-form {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 30px;
+}
+
+.search-form form {
+  text-align: center;
+}
+
+.search-form input {
+  padding: 7px;
+  border: solid 3px var(--Background_3);
+  border-radius: 10px;
+}
+
+.search-form input[type="search"] {
+  width: 50vw;
+
+  margin-right: 1em;
+}
+
+.search-form input[type="submit"] {
+  width: 20vw;
+  font-size: large;
+}
+
+.search-form input[type="submit"]:hover {
+  width: 20vw;
+  cursor: pointer;
+  background-color: rgb(39, 89, 197);
+  transition: background-color 500ms linear;
 }

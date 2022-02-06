@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
+if (isset($_GET["terme"]) AND $_GET["s"] == "Rechercher")
 {
  $_GET["terme"] = htmlspecialchars($_GET["terme"]); //sécurise faille html
  $terme = $_GET["terme"];
@@ -9,7 +9,7 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
 if (isset($terme))
 {
  $terme = strtolower($terme);
- $select_terme = $bdd->prepare("SELECT name FROM public.keywords WHERE name LIKE ? OR contenu LIKE ?");
+ $select_terme = $bdh->prepare("SELECT name FROM public.keywords WHERE name LIKE ? OR contenu LIKE ?");
  $select_terme->execute(array("%".$terme."%", "%".$terme."%"));
 }
 else

@@ -1,18 +1,18 @@
 <?php
 
-   require 'template/connect.php';
+   // require 'template/connect.php';
 
-   $sql = "SELECT * FROM public.patho;";
-   $pathos = $conn->prepare($sql);
-   $pathos->execute();
+   // $sql = "SELECT * FROM public.patho;";
+   // $pathos = $conn->prepare($sql);
+   // $pathos->execute();
 
-   while ($row = $pathos->fetch(PDO::FETCH_ASSOC)) {
-      //echo $row['desc'];
-     // echo " ";
-   }
+   // while ($row = $pathos->fetch(PDO::FETCH_ASSOC)) {
+   //    //echo $row['desc'];
+   //   // echo " ";
+   // }
   
 
-   require 'elements/header.php';
+   require_once 'elements/header.php';
 
    define('MAIN_PATH', getcwd());
    require(MAIN_PATH . '/inc/smarty-4.0.4/libs/Smarty.class.php');
@@ -28,11 +28,9 @@
    require 'template/home.php';
    } elseif ($uri === '/?search') {
    require 'template/search.php';
-   }
+   } elseif ($uri === '/?signup') {
+      require 'template/signup.php';
+      }
 
-   require 'elements/footer.php';
-<<<<<<< HEAD
- 
-=======
-   $conn=null;
->>>>>>> f0a4a86dd93a0d35890f202da20753bd23c27457
+   require_once 'elements/footer.php';
+  // $conn=null;

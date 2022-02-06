@@ -51,30 +51,26 @@ if(!isset($_COOKIE["Username"])): ?>
 <form action="home.php" method="post">
     <!-- si message d'erreur on l'affiche -->
     <?php if(isset($errorMessage)) : ?>
-        <div class="alert alert-danger" role="alert">
-            <?php echo $errorMessage; ?>
-        </div>
+    <div class="alert alert-danger" role="alert">
+        <?php echo $errorMessage; ?>
+    </div>
     <?php endif; ?>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" placeholder="you@exemple.com">
-        <div id="email-help" class="form-text">L'email utilisé lors de la création de compte.</div>
+    <div class="form-container">
+        <div class="connexion-form">
+            <label for="email" class="form-label">Email : </label>
+            <input type="email" class="email-input" id="email" name="email" placeholder="you@exemple.com">
+            <label for="password" class="form-label">Mot de passe : </label>
+            <input type="password" class="password-input" id="password" name="password" placeholder="mot de passe">
+            <button type="submit" class="submit-btn">Valider</button>
+            <p>Vous n'avez pas encore de compte inscrivez-vous : </p>
+            <div class="signup-link"><a href="?signup">S'inscrire</a></div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password">
-    </div>
-    <button type="submit" class="btn btn-primary">Send</button>
 </form>
+
 <!-- 
     Si utilisateur/trice bien connectée on affiche un message de succès
 -->
 <?php else: ?>
-    <meta http-equiv="refresh" content="1; url=../index.php" />
+<meta http-equiv="refresh" content="1; url=../index.php" />
 <?php endif; ?>
-
-<div>
-<a href="./signup.php">S'inscrire</a> 
-
-
-</div>
