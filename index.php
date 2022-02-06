@@ -1,14 +1,10 @@
 <?php
 
-   // require 'template/connect.php';
-
-   // $sql = "SELECT * FROM public.patho;";
-   // $pathos = $conn->prepare($sql);
-   // $pathos->execute();
+   require 'template/connect.php';
 
    // while ($row = $pathos->fetch(PDO::FETCH_ASSOC)) {
-   //    //echo $row['desc'];
-   //   // echo " ";
+   //    echo $row['desc'];
+   //   echo " ";
    // }
   
 

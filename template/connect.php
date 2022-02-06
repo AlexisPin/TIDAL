@@ -12,5 +12,6 @@ require_once 'config.php';
      }
   }catch (PDOException $e){
      echo $e->getMessage();
+     echo "<script>console.log(\"Impossible de se connecter à $db!\")</script>";
   }
 ?>

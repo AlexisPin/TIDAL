@@ -9,7 +9,7 @@ if (isset($_GET["terme"]) AND $_GET["s"] == "Rechercher")
 if (isset($terme))
 {
  $terme = strtolower($terme);
- $select_terme = $bdh->prepare("SELECT name FROM public.keywords WHERE name LIKE ? OR contenu LIKE ?");
+ $select_terme = $bdh->prepare("SELECT name FROM public.keywords WHERE name LIKE %$terme");
  $select_terme->execute(array("%".$terme."%", "%".$terme."%"));
 }
 else

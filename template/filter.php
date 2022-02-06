@@ -14,6 +14,13 @@
    $meridiens_data = $meridiens->fetchAll();
    $dbh->commit(); 
 
+   $sql = "SELECT code, nom, mer FROM public.meridien INNER JOIN public.patho ON public.meridien.code = public.patho.mer;";
+   $dbh->beginTransaction();
+   $nom_meridiens = $dbh->prepare($sql);
+   $nom_meridiens->execute();
+   $nom_meridiens_data = $nom_meridiens->fetchAll();
+   $dbh->commit(); 
+
 ?>
 
 <div class="sidebar">
@@ -28,19 +35,25 @@
         </select>
     </div>
     <div class="type">
-        <h3>Type</h3>
-        <select name="meridien" id="meridien-select">
-            <option value="">--Choisissez un méridien--</option>
+        <h3>Type de pathologie</h3>
+        <select name="type" id="type-select">
+            <option value="">--Choisissez un type de pathologie--</option>
             <?php foreach($meridiens_data as $meridien): ?>
             <option value="<?=$meridien['nom'];?>"><?=$meridien['nom'];?></option>
             <?php endforeach; ?>
         </select>
     </div>
     <div class="caracteristique">
-        <h3>Caracteristique </h3>
-        <li><a href="#">+ Pleins</a></li>
+        <h3>Caractéristiques</h3>
+        <!-- <li><a href="#">+ Pleins</a></li>
         <li><a href="#">+ Chaud</a></li>
-        <li><a href="#">+ Vide</a></li>
+        <li><a href="#">+ Vide</a></li> -->
+        <select name="type" id="caracteristique-select">
+            <option value="">--Choisissez une caractéristique--</option>
+            <?php foreach($nom_meridiens_data as $nom_meridien): ?>
+            <option value="<?=$nom_meridien['nom'];?>"><?=$nom_meridien['nom'];?></option>
+            <?php endforeach; ?>
+        </select>
     </div>
 </div>
 
