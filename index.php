@@ -32,3 +32,4 @@
    }
 
    require 'elements/footer.php';
+ 
