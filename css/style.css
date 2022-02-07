@@ -136,13 +136,13 @@ a:hover {
   padding-top: 5rem;
 }
 
-.result,.pathologie-container a {
+.result a, .pathologie-container a{
   transition: ease-in-out 0.3;
   border-radius: 1rem;
   background-color: rgb(255, 255, 255);
 }
 
-.result,.pathologie-container a:hover {
+.result a:hover, .pathologie-container a:hover {
   background-color: rgb(138, 54, 54);
 }
 
