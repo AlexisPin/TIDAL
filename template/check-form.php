@@ -1,5 +1,5 @@
 <div class="search-form">
-    <form action="?check-form" method="POST">
+    <form action="?check-form" method="POST" autocomplete="off">
         <input type="search" name="search" placeholder="Rechercher une pathologie ...">
         <input type="submit" name="submit-search">
     </form>
@@ -14,10 +14,10 @@ if (isset($_POST["submit-search"]))
  $search = strip_tags($search); //supprime les balise html
  $search = strtolower($search);
 
- $sql = "SELECT name FROM public.keywords WHERE name LIKE '%$search%'";
+ $sql = "SELECT name FROM public.keywords WHERE name LIKE :search";
  $dbh->beginTransaction();
  $result = $dbh->prepare($sql);
- $result->execute();
+ $result->execute(array(':search' => "%$search%"));
  $queryResult = $result->fetchAll();
  $dbh->commit();
 
