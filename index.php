@@ -18,15 +18,27 @@
    $uri = $_SERVER['REQUEST_URI'];
    require 'elements/navbar.php';
    
-   if ($uri === '/?filter') {
-   require 'template/filter.php';
-   } elseif ($uri === '/?connexion') {
-   require 'template/home.php';
-   } elseif ($uri === '/?search') {
-   require 'template/search.php';
-   } elseif ($uri === '/?signup') {
-      require 'template/signup.php';
-      }
+   switch($uri) {
+      case '/?filter':
+         require 'template/filter.php';
+         break;
+      case '/?connexion':
+         require 'template/home.php';
+         break;
+      case '/?search':
+         require 'template/search.php';
+         break;
+      case '/?search':
+         require 'template/search.php';
+         break;
+      case '/?signup':
+         require 'template/signup.php';
+         break;
+      case '/?check-form':
+         require 'template/check-form.php';
+         break;  
+   }
 
    require_once 'elements/footer.php';
-  // $conn=null;
+  $dbh=null;
+   ?>

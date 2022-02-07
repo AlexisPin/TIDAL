@@ -103,10 +103,10 @@ a:hover {
 .sidebar {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   flex-flow: column wrap;
   height: 100%;
-  width: 15%;
+  width: 15vw;
   position: fixed;
   background-color: var(--Background_3);
   overflow-x: hidden;
@@ -128,8 +128,8 @@ a:hover {
 
 .result {
   background-color: var(--Background_1);
-  width: 85%;
-  margin-left: 15%;
+  width: 85vw;
+  margin-left: 15vw;
   display: flex;
   flex-flow: row wrap;
   padding: 1vh;
@@ -141,10 +141,18 @@ a:hover {
   border-radius: 1rem;
   background-color: rgb(255, 255, 255);
 }
+
 .result a:hover {
   background-color: rgb(138, 54, 54);
 }
 
+.pathologie-container {
+  width: 100vw;
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 10rem;
+  justify-content: center;
+}
 .patho {
   display: flex;
   align-items: center;
@@ -269,7 +277,6 @@ a:hover {
 
 .search-form input[type="search"] {
   width: 50vw;
-
   margin-right: 1em;
 }
 

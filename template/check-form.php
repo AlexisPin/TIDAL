@@ -1,24 +1,33 @@
-<?php
-if (isset($_GET["terme"]) AND $_GET["s"] == "Rechercher")
-{
- $_GET["terme"] = htmlspecialchars($_GET["terme"]); //sécurise faille html
- $terme = $_GET["terme"];
- $terme = trim($terme); //supprime les espaces
- $terme = strip_tags($terme); //supprime les balise html
-}
-if (isset($terme))
-{
- $terme = strtolower($terme);
- $select_terme = $bdh->prepare("SELECT name FROM public.keywords WHERE name LIKE %$terme");
- $select_terme->execute(array("%".$terme."%", "%".$terme."%"));
-}
-else
-{
- $message = "Vous devez entrer votre requete dans la barre de recherche";
-}
+<div class="search-form">
+    <form action="?check-form" method="POST">
+        <input type="search" name="search" placeholder="Rechercher une pathologie ...">
+        <input type="submit" name="submit-search">
+    </form>
+</div>
 
-while($terme_trouve = $select_terme->fetch())
+<?php
+if (isset($_POST["submit-search"]))
 {
-echo "<div><h2>".$terme_trouve['idk']."</h2><p> ".$terme_trouve['name']."</p>";
+ $_POST["search"] = htmlspecialchars($_POST["search"]); //sécurise faille html
+ $search = $_POST["search"];
+ $search = trim($search); //supprime les espaces
+ $search = strip_tags($search); //supprime les balise html
+ $search = strtolower($search);
+
+ $sql = "SELECT name FROM public.keywords WHERE name LIKE '%$search%'";
+ $dbh->beginTransaction();
+ $result = $dbh->prepare($sql);
+ $result->execute();
+ $queryResult = $result->fetchAll();
+ $dbh->commit();
 }
-$select_terme->closeCursor();
+?>
+<div class="pathologie-container">
+       <?php foreach($queryResult as $keyword): ?>
+        <a href="#">
+            <div class="patho">
+                <h4><?= $keyword['name'];?></h4>
+            </div>
+        </a>
+        <?php endforeach; ?>
+</div>
