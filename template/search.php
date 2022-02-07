@@ -1,7 +1,7 @@
 <div class="search-form">
     <form action="?check-form" method="POST">
         <input type="search" name="search" placeholder="Rechercher une pathologie ...">
-        <input type="submit" name="submit-search">
+        <input type="submit" name="submit-search" value="Rechercher">
     </form>
 </div>
 

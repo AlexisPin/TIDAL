@@ -20,8 +20,13 @@ if (isset($_POST["submit-search"]))
  $result->execute();
  $queryResult = $result->fetchAll();
  $dbh->commit();
+
+ $count = $result->rowCount();
+
+ echo $count;
 }
 ?>
+
 <div class="pathologie-container">
        <?php foreach($queryResult as $keyword): ?>
         <a href="#">
