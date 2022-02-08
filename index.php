@@ -22,8 +22,8 @@
       case '/?filter':
          require 'template/filter.php';
          break;
-      case '/?connexion':
-         require 'template/home.php';
+      case '/?login':
+         require 'template/login.php';
          break;
       case '/?search':
          require 'template/search.php';

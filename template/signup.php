@@ -1,53 +1,80 @@
 <?php
 
+require_once "dataUserController.php";
 
-require 'connect.php';
-
-$sql = "SELECT * FROM public.users;";
-$dbh->beginTransaction();
-$users = $dbh->prepare($sql);
-$users->execute();
+// $sql = "SELECT * FROM public.users;";
+// $dbh->beginTransaction();
+// $users = $dbh->prepare($sql);
+// $users->execute();
 
 // Validation du formulaire
-if (isset($_POST["Username"]) && isset($_POST['email']) &&  isset($_POST['password'])) {
-    $Username = $_POST["Username"];
-    $Email = $_POST["email"];
-    $Pass_word = $_POST["password"];
+// if (isset($_POST["username"]) && isset($_POST['email']) &&  isset($_POST['password'])) {
+//     $Username = $_POST["Username"];
+//     $Email = $_POST["email"];
+//     $Pass_word = $_POST["password"];
 
-    $sql = "$sql = 'SELECT * FROM public.users";
-    $dbh->beginTransaction();
-    try {
-        $sth = $dbh->prepare($sql);
-        $sth->execute(array('Username' => $Username , 'Email' => $Email , 'pass_word' => $Pass_word));
-        $data = $sth->fetchAll();
-        $dbh->commit();
-    } 
-    catch(PDOException $e) {
-        echo "SUPER";
-        $dbh->rollback();
+//     $sql = "$sql = 'SELECT * FROM public.users";
+//     $dbh->beginTransaction();
+//     try {
+//         $sth = $dbh->prepare($sql);
+//         $sth->execute(array('Username' => $Username , 'Email' => $Email , 'pass_word' => $Pass_word));
+//         $data = $sth->fetchAll();
+//         $dbh->commit();
+//     } 
+//     catch(PDOException $e) {
+//         echo "SUPER";
+//         $dbh->rollback();
+//     }
+// }
+// ?>
+
+<h1>S'inscrire</h1>
+<form id="connection-form" action="?signup" method="POST" autocomplete="off">
+    <?php
+    if(count($errors) == 1){
+        ?>
+    <div class="error-container">
+        <?php
+    foreach($errors as $showerror){
+        echo $showerror;
     }
-}
-?>
-<h1>Sign up</h1>
-<form action="signup.php" method="post">
-    <!-- si message d'erreur on l'affiche -->
-    <?php if(isset($errorMessage)) : ?>
-    <div class="alert alert-danger" role="alert">
-        <?php echo $errorMessage; ?>
+    ?>
     </div>
-    <?php endif; ?>
-    <div class="mb-3">
-        <label for="Username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="Username" name="Username">
+    <?php
+        }elseif(count($errors) > 1){
+            ?>
+    <div class="error-container">
+        <?php
+    foreach($errors as $showerror){
+        ?>
+        <li><?php echo $showerror; ?></li>
+        <?php
+        }
+        ?>
     </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help"
-            placeholder="you@exemple.com">
-        <div id="email-help" class="form-text"></div>
+    <?php
+        }
+        ?>
+    <div class="pseudo-container">
+        <label for="username">Nom d'utilisateur</label>
+        <input type="text" autocomplete="off" name="username" required value="<?php echo $username ?>">
     </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password">
+
+    <div class="email-container">
+        <label for="email">Email</label>
+        <input type="email" autocomplete="off" name="email" required value="<?php echo $email ?>">
     </div>
-    <button type="submit" class="btn btn-primary">Send</button>
+
+    <div class="password-container">
+        <label for="password">Mot de passe</label>
+        <input type="password" autocomplete="off" name="password" required>
+    </div>
+
+    <div class="confirm-container">
+        <label for="confpassword">Confirmer mot de passe</label>
+        <input type="password" autocomplete="off" name="confpassword" required>
+    </div>
+
+    <input type="submit" name="signup" value="S'inscrire">
+    <div class="login-container">Déjà membre ? <a href="?login">Connectez-vous</a></div>
+</form>

@@ -1,9 +1,13 @@
 * {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   padding: 0;
   margin: 0;
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
+  outline: none;
+  color: rgb(82, 82, 82);
 }
 
 :root {
@@ -136,13 +140,15 @@ a:hover {
   padding-top: 5rem;
 }
 
-.result a, .pathologie-container a{
+.result a,
+.pathologie-container a {
   transition: ease-in-out 0.3;
   border-radius: 1rem;
   background-color: rgb(255, 255, 255);
 }
 
-.result a:hover, .pathologie-container a:hover {
+.result a:hover,
+.pathologie-container a:hover {
   background-color: rgb(138, 54, 54);
 }
 
@@ -174,85 +180,71 @@ a:hover {
 }
 
 /**************************Formulaire de Connexion******************************/
-.form-container {
-  background: rgb(182, 107, 140);
-  background: radial-gradient(
-    circle,
-    rgba(182, 107, 140, 1) 0%,
-    rgba(26, 106, 200, 1) 100%
-  );
-  width: 50vw;
-  height: 45vh;
-  border: solid burlywood 2px;
-  border-radius: 1rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font: 1em bold;
-}
-
-.connexion-form {
+#connection-form {
+  width: 50%;
+  min-width: 380px;
+  max-width: 600px;
+  background: white;
   display: grid;
-  grid-template-columns: 15vw 10vw 25vw;
-}
-
-.connexion-form input {
-  grid-column: 2 / -1;
-  padding: 5px;
-  margin: 10px;
-  width: 30vw;
-}
-.connexion-form label {
-  grid-column: 1;
-  padding: 5px;
-  margin: 10px;
-}
-
-.submit-btn {
-  grid-column: 2;
-  padding: 10px;
-  background-color: #0d79ddbd;
-  margin: 10px;
-  border: solid 2px blue;
-  border-radius: 5px;
-}
-.submit-btn:hover {
-  padding: 10px;
-  background-color: #0082e6;
-  cursor: pointer;
-}
-
-.connexion-form p {
-  grid-column: 1 / 3;
-  grid-row: 4;
-  padding: 5px;
-  margin: 10px;
-}
-.connexion-form .signup-link {
-  grid-column: 3 / -1;
-  grid-row: 4;
-  padding: 5px;
-  margin: 10px;
-}
-
-.signup-link {
-  grid-column: 1;
-  padding: 10px;
-  background-color: #0d79ddbd;
-  margin: 10px;
-  position: relative;
-  width: 10vw;
-  height: 2.5em;
-  border: solid 2px blue;
-  border-radius: 5px;
-}
-.signup-link a {
-  color: black;
+  grid-template-rows: repeat(4, 104px);
+  padding: 60px 45px 30px;
+  border-radius: 16px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border: 1px solid #16d9e7;
+  margin-top : 3rem;
+}
+
+#connection-form div {
+  transition: 0.2s;
+}
+#connection-form div > label {
+  letter-spacing: 1px;
+}
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  margin: 7px 0 7px;
+  border: 1px solid transparent;
+  background: rgb(235, 244, 242);
+  height: 36px;
+  width: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+  font-size: 1.1rem;
+  padding-left: 10px;
+  transition: 0.2s;
+}
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+  border: 1px solid #5ef9a4;
+}
+
+#connection-form > input[type="submit"] {
+  border: none;
+  background: linear-gradient(65deg, #16d9e7, #5ef9a4);
+  width: 50%;
+  margin: 12px auto 0;
+  padding: 10px;
+  border-radius: 150px;
+  font-size: 1.2rem;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+#connection-form > input[type="submit"]:hover {
+  filter: brightness(105%);
+  transform: translateX(2px);
+}
+
+.login-container,
+.signup-container {
+  letter-spacing: 1px;
+  margin-top : 50px;
 }
 
 /**************************Barre de recherche******************************/

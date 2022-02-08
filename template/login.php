@@ -1,5 +1,5 @@
 <?php
-
+ require_once "dataUserController.php";
 $users = [
     [
     'Name' => 'Tidal tidal',
@@ -48,24 +48,43 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
    //Si utilisateur/trice est non identifié(e), on affiche le formulaire
 
 if(!isset($_COOKIE["Username"])): ?>
-<form action="home.php" method="post">
-    <!-- si message d'erreur on l'affiche -->
-    <?php if(isset($errorMessage)) : ?>
-    <div class="alert alert-danger" role="alert">
-        <?php echo $errorMessage; ?>
+<form id="connection-form" action="?login" method="POST">
+    <?php
+if(count($errors) == 1){
+        ?>
+    <div class="error-container">
+        <?php
+    foreach($errors as $showerror){
+        echo $showerror;
+    }
+    ?>
     </div>
-    <?php endif; ?>
-    <div class="form-container">
-        <div class="connexion-form">
-            <label for="email" class="form-label">Email : </label>
-            <input type="email" class="email-input" id="email" name="email" placeholder="you@exemple.com">
-            <label for="password" class="form-label">Mot de passe : </label>
-            <input type="password" class="password-input" id="password" name="password" placeholder="mot de passe">
-            <button type="submit" class="submit-btn">Valider</button>
-            <p>Vous n'avez pas encore de compte inscrivez-vous : </p>
-            <div class="signup-link"><a href="?signup">S'inscrire</a></div>
-        </div>
+    <?php
+        }elseif(count($errors) > 1){
+            ?>
+    <div class="error-container">
+        <?php
+    foreach($errors as $showerror){
+        ?>
+        <li><?php echo $showerror; ?></li>
+        <?php
+        }
+        ?>
     </div>
+    <?php
+        }
+        ?>
+    <div class="email-container">
+        <label for="email">Email</label>
+        <input type="email" autocomplete="off" name="email" required value="<?php echo $email ?>">
+    </div>
+
+    <div class="password-container">
+        <label for="password">Mot de passe</label>
+        <input type="password" autocomplete="off" name="password" required>
+    </div>
+    <input type="submit" name="signup" value="Se connecter">
+    <div class="signup-container">Vous n'avez pas encore de compte ? <a href="?signup">S'inscrire</a></div>
 </form>
 
 <!-- 
