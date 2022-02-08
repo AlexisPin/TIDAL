@@ -247,6 +247,12 @@ input[type="text"]:focus {
   margin-top : 50px;
 }
 
+.error-container {
+  opacity: 0.6;
+  color: red;
+  border : solid 1px red;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
 /**************************Barre de recherche******************************/
 
 .search-form {
