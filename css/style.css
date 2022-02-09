@@ -135,6 +135,7 @@ a:hover {
   width: 85vw;
   margin-left: 15vw;
   display: flex;
+  align-items: center;
   flex-flow: row wrap;
   padding: 1vh;
   padding-top: 5rem;

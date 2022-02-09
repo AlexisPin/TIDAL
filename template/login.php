@@ -8,8 +8,6 @@ $users = [
     ],
 ];
 
-
-
 // Validation du formulaire
 if (isset($_POST['email']) &&  isset($_POST['password'])) {
     foreach ($users as $user) {

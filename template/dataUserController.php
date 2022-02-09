@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require "template/connect.php";
+
 $email = "";
 $username = "";
 $errors = array();
