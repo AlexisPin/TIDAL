@@ -5,6 +5,8 @@
       email VARCHAR(50) NOT NULL,
       password VARCHAR(100) NOT NULL,
       UNIQUE(email))";
+
+//$dbh->query("SET IDENTITY_INSERT public.users ON");
       $dbh->exec($sql);
 
       echo "<script>console.log(\"Table bien crée ! \")</script>";

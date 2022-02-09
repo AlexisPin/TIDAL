@@ -1,9 +1,7 @@
 <?php 
-session_start();
 
-$email = "";
-$username = "";
 $errors = array();
+$succes = array();
 
 //if user signup button
 if(isset($_POST['signup'])){
@@ -26,14 +24,18 @@ if(isset($_POST['signup'])){
     }
     if(count($errors) === 0){
         $encpass = password_hash($password, PASSWORD_BCRYPT);
-        $insert_data = "INSERT INTO public.users (username, email, password )
-                        values('$username', '$email', '$encpass')";
+        $insert_data = "SET IDENTITY_INSERT public.users ON; INSERT INTO public.users (username, email, password) VALUES(':username', ':email', ':password')";
         $dbh->beginTransaction();
         $result = $dbh->prepare($insert_data);
-        $result->execute();
-        $queryResult = $result->fetchAll();
+        $result->execute(array(':username' => "$username",':email' => "$email",':password' => "$encpass"));
+        $queryResult = $result->fetch();
         $dbh->commit();
-        if(!$queryResult){
+        console_log($password);
+        console_log($encpass);
+        if($queryResult){
+            $succes['succes-register'] = "Votre compte a été crée avec succès, vous pouvez vous connecter dès à présent ";
+            header('location: ?login');
+        }else {
             $errors['db-error'] = "Erreur lors de l'insertion des données!";
         }
     }
@@ -45,15 +47,33 @@ if(isset($_POST['signup'])){
         $check_email = "SELECT * FROM users WHERE email = :email";
         $dbh->beginTransaction();
         $result = $dbh->prepare($check_email);
-        $result->execute(array(':email' => "$search"));
+        $result->execute(array(':email' => "$email"));
 
         if($result->rowCount()  > 0){
             $queryResult = $result->fetch();
             $dbh->commit();
             $fecth_pass = $queryResult['password'];
             if(password_verify($password, $fetch_pass)){
-                  $_SESSION['email'] = $email;
-                  $_SESSION['password'] = $password;
+                // retenir l'email et le nom de la personne connectée pendant 5 minutes
+                setcookie(
+                    'Username',
+                    $queryResult['username'],
+                    [
+                        'expires' => time() + 5*60,
+                        'secure' => true,
+                        'httponly' => true,
+                    ]
+                );
+                setcookie(
+                    'Email',
+                    $queryResult['email'],
+                    [
+                        'expires' => time() + 5*60,
+                        'secure' => true,
+                        'httponly' => true,
+                    ]
+                );
+            
                     header('location: ?filter');
             }else{
                 $errors['email'] = "Mot de passe ou email incorrect !";

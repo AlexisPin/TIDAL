@@ -29,7 +29,20 @@ require_once "dataUserController.php";
 // ?>
 
 <h1>S'inscrire</h1>
-<form id="connection-form" action="?signup" method="POST" autocomplete="off">
+<form id="connection-form" action="?signup" method="POST" autocomplete="on">
+    <?php
+    if(count($succes) == 1){
+        ?>
+    <div class="succes-container">
+        <?php
+    foreach($succes as $showsucces){
+        echo $showsucces;
+    }
+    ?>
+    </div>
+    <?php 
+    } 
+    ?>
     <?php
     if(count($errors) == 1){
         ?>
@@ -57,17 +70,17 @@ require_once "dataUserController.php";
         ?>
     <div class="pseudo-container">
         <label for="username">Nom d'utilisateur</label>
-        <input type="text" autocomplete="off" name="username" required value="<?php echo $username ?>">
+        <input type="text" autocomplete="on" name="username" required>
     </div>
 
     <div class="email-container">
         <label for="email">Email</label>
-        <input type="email" autocomplete="off" name="email" required value="<?php echo $email ?>">
+        <input type="email" autocomplete="on" name="email" required>
     </div>
 
     <div class="password-container">
         <label for="password">Mot de passe</label>
-        <input type="password" autocomplete="off" name="password" required>
+        <input type="password" autocomplete="on" name="password" required>
     </div>
 
     <div class="confirm-container">

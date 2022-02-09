@@ -1,5 +1,9 @@
 <?php
-
+function console_log( $data ){
+   echo '<script>';
+   echo 'console.log('. json_encode( $data ) .')';
+   echo '</script>';
+ }
    require 'template/connect.php';
 
    // while ($row = $pathos->fetch(PDO::FETCH_ASSOC)) {
@@ -17,7 +21,7 @@
 
    $uri = $_SERVER['REQUEST_URI'];
    require 'elements/navbar.php';
-   
+
    switch($uri) {
       case '/?filter':
          require 'template/filter.php';
