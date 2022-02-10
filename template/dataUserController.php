@@ -30,13 +30,10 @@ if(isset($_POST['signup'])){
         $result->execute(array(":username" => $username,":email" => $email,":password" => $encpass));
         $queryResult = $result->fetch();
         $dbh->commit();
-        console_log($result);
-        console_log($queryResult);
         if($queryResult){
             $succes['succes-register'] = "Votre compte a été crée avec succès, vous pouvez vous connecter dès à présent ";
-            header('location: ?login');
         }else {
-            $errors['db-error'] = "Erreur lors de l'insertion des données!";
+            $errors['db-error'] = "Erreur lors de l'insertion des données !";
         }
     }
 }

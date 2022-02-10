@@ -76,7 +76,7 @@ if(count($errors) == 1){
         ?>
     <div class="email-container">
         <label for="email">Email</label>
-        <input type="email" autocomplete="off" name="email" required >
+        <input type="email" autocomplete="off" name="email" required>
     </div>
 
     <div class="password-container">

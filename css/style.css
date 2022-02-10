@@ -4,87 +4,101 @@
   padding: 0;
   margin: 0;
   text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
 }
 
 :root {
   --Background_1: #f6f5f5;
   --Background_2: #ee6f57;
   --Background_3: #1f3c88;
-  --Background_4: #070d59;
+  --Background_4: #081191;
 }
 
-nav {
+nav{
   background: var(--Background_4);
   height: 5rem;
   width: 100%;
-  position: fixed;
-  border: solid darkblue 2px;
-  text-decoration: none;
-  list-style: none;
 }
-label.logo {
+label.logo{
   color: white;
-  font-size: 2rem;
-  line-height: 80px;
-  padding: 0 1rem;
+  font-size: 35px;
+  line-height: 5rem;
+  padding: 0 40px;
   font-weight: bold;
 }
-nav ul {
+nav ul{
   float: right;
   margin-right: 20px;
 }
-nav ul li {
+nav ul li{
   display: inline-block;
-  line-height: 80px;
+  line-height: 5rem;
   margin: 0 5px;
 }
-nav ul li a {
+nav ul li a{
   color: white;
   font-size: 17px;
   padding: 7px 13px;
   border-radius: 3px;
   text-transform: uppercase;
+  text-decoration: none;
 }
-nav a.active,
-a:hover {
-  background-color: var(--Background_3);
-  transition: 0.5s ease;
+nav ul li a:hover{
+  background: #1b9bff;
+  color: wheat;
+  transition: .5s;
 }
-
-@media screen and (max-width: 952px) {
-  label.logo {
+.checkbtn{
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 5rem;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check{
+  display: none;
+}
+@media (max-width: 858px){
+  .checkbtn{
+    display: block;
+    margin: 20px;
+  }
+  label.logo{
     font-size: 30px;
-    padding-left: 1rem;
+    padding-left: 50px;
   }
-  nav ul li a {
-    font-size: 16px;
-  }
-}
-@media screen and (max-width: 858px) {
-  nav ul {
+  nav ul{
     position: fixed;
     width: 100%;
-    height: 100vh;
+    height: 280px;
     background: #2c3e50;
-    top: 80px;
-    left: -100%;
+    top: 5rem;
+    right: -110%;
     text-align: center;
-    transition: all 0.5s;
+    transition: all .5s;
   }
-  nav ul li {
+  nav ul li{
     display: block;
-    margin: 50px 0;
-    line-height: 30px;
+    margin: 2em 0;
+    line-height: 2em;
   }
-  nav ul li a {
-    font-size: 20px;
+  nav ul li a{
+    font-size: 1em;
   }
-  nav a:hover,
-  a.active {
+  nav ul li a:hover{
     background: none;
     color: #0082e6;
   }
+  #check:checked ~ ul{
+    right: -20px;
+  }
 }
+
+
+/************Bibliographie ****************************/
 
 .bibliography {
   display: flex;
