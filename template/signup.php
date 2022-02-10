@@ -70,22 +70,22 @@ require_once "dataUserController.php";
         ?>
     <div class="pseudo-container">
         <label for="username">Nom d'utilisateur</label>
-        <input type="text" autocomplete="on" name="username" required>
+        <input type="text" autocomplete="on" name="username" id="username" required>
     </div>
 
     <div class="email-container">
         <label for="email">Email</label>
-        <input type="email" autocomplete="on" name="email" required>
+        <input type="email" autocomplete="on" name="email" id="email" required>
     </div>
 
     <div class="password-container">
         <label for="password">Mot de passe</label>
-        <input type="password" autocomplete="on" name="password" required>
+        <input type="password" autocomplete="on" name="password" id="password" required>
     </div>
 
     <div class="confirm-container">
         <label for="confpassword">Confirmer mot de passe</label>
-        <input type="password" autocomplete="off" name="confpassword" required>
+        <input type="password" autocomplete="off" name="confpassword" id="confpassword" required>
     </div>
 
     <input type="submit" name="signup" value="S'inscrire">

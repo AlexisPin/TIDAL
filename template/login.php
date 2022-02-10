@@ -76,12 +76,12 @@ if(count($errors) == 1){
         ?>
     <div class="email-container">
         <label for="email">Email</label>
-        <input type="email" autocomplete="off" name="email" required>
+        <input type="email" autocomplete="off" name="email" id="email" required>
     </div>
 
     <div class="password-container">
         <label for="password">Mot de passe</label>
-        <input type="password" autocomplete="off" name="password" required>
+        <input type="password" autocomplete="off" name="password" id="password" required>
     </div>
     <input type="submit" name="login" value="Se connecter">
     <div class="signup-container">Vous n'avez pas encore de compte ? <a href="?signup">S'inscrire</a></div>

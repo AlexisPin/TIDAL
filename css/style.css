@@ -19,6 +19,8 @@ nav{
   background: var(--Background_4);
   height: 5rem;
   width: 100%;
+  position: fixed;
+  z-index: 2;
 }
 label.logo{
   color: white;
@@ -227,7 +229,7 @@ nav ul li a:hover{
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid #16d9e7;
-  margin-top: 5rem;
+  margin-top: 2.5rem;
   color: rgb(82, 82, 82);
   outline: none;
 }
