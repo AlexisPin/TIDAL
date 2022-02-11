@@ -2,7 +2,6 @@
 
 $errors = array();
 $succes = array();
-
 //if user signup button
 if(isset($_POST['signup'])){
     $username = $_POST['username'];
@@ -28,10 +27,15 @@ if(isset($_POST['signup'])){
         $dbh->beginTransaction();
         $result = $dbh->prepare($insert_data);
         $result->execute(array(":username" => $username,":email" => $email,":password" => $encpass));
-        $queryResult = $result->fetch();
+        $queryResult = $result->fetchAll();
         $dbh->commit();
+        console_log($queryResult);
+        console_log($result);
         if($queryResult){
             $succes['succes-register'] = "Votre compte a été crée avec succès, vous pouvez vous connecter dès à présent ";
+            ?>
+            <meta http-equiv="refresh" content="3; url=?login" />
+            <?php
         }else {
             $errors['db-error'] = "Erreur lors de l'insertion des données !";
         }
@@ -49,8 +53,10 @@ if(isset($_POST['signup'])){
         if($result->rowCount()  > 0){
             $queryResult = $result->fetch();
             $dbh->commit();
-            $fecth_pass = $queryResult['password'];
+            $fetch_pass = $queryResult['password'];
             if(password_verify($password, $fetch_pass)){
+                session_start();
+                $_SESSION['connect'] = 'true';
                 // retenir l'email et le nom de la personne connectée pendant 5 minutes
                 setcookie(
                     'Username',
@@ -70,6 +76,7 @@ if(isset($_POST['signup'])){
                         'httponly' => true,
                     ]
                 );
+              
             
                     header('location: ?filter');
             }else{

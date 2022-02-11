@@ -36,7 +36,7 @@ require_once "dataUserController.php";
     <div class="succes-container">
         <?php
     foreach($succes as $showsucces){
-        echo $showsucces;
+        ?><li><?php echo $showsucces;?></li><?php
     }
     ?>
     </div>
