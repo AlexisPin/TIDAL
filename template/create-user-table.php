@@ -11,4 +11,5 @@
       $dbh->exec($sql);
 
       echo "<script>console.log(\"Table bien crée ! \")</script>";
+
 ?>
