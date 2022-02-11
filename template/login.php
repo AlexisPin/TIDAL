@@ -79,6 +79,12 @@ if(count($errors) == 1){
 <!-- 
     Si utilisateur/trice bien connectée on affiche un message de succès
 -->
-<?php else: ?>
-<meta http-equiv="refresh" content="1; url=?filter" />
+<?php else: 
+    setcookie("Username", "", time()-3600);
+    setcookie("Email", "", time()-3600);
+    session_start();
+    unset($_SESSION["connect"]);
+    session_destroy();
+    ?>
+    <meta http-equiv="refresh" content="1; url=?filter" />
 <?php endif; ?>
