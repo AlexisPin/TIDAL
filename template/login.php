@@ -21,18 +21,7 @@
 //             setcookie(
 //                 'Username',
 //                 $user['Name'],
-//                 [
-//                     'expires' => time() + 5*60,
-//                     'secure' => true,
-//                     'httponly' => true,
-//                 ]
-//             );
-//             setcookie(
-//                 'Email',
-//                 $user['email'],
-//                 [
-//                     'expires' => time() + 5*60,
-//                     'secure' => true,
+//                 [userID smallint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 ) PRIMARY KEY,re' => true,
 //                     'httponly' => true,
 //                 ]
 //                 );

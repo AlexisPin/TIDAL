@@ -24,7 +24,7 @@ if(isset($_POST['signup'])){
     }
     if(count($errors) === 0){
         $encpass = password_hash($password, PASSWORD_BCRYPT);
-        $insert_data = "SET IDENTITY_INSERT public.users ON; INSERT INTO public.users(username, email, password) VALUES(:username, :email, :password)";
+        $insert_data = "INSERT INTO public.users(username, email, password) VALUES(:username, :email, :password)";
         $dbh->beginTransaction();
         $result = $dbh->prepare($insert_data);
         $result->execute(array(":username" => $username,":email" => $email,":password" => $encpass));
