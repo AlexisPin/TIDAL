@@ -28,7 +28,7 @@ if(isset($_POST['signup'])){
         $dbh->beginTransaction();
         $result = $dbh->prepare($insert_data);
         $result->execute(array(":username" => $username,":email" => $email,":password" => $encpass));
-        $queryResult = $result->fetch();
+        $queryResult = $result->fetchAll();
         $dbh->commit();
         if($queryResult){
             $succes['succes-register'] = "Votre compte a été crée avec succès, vous pouvez vous connecter dès à présent ";
@@ -49,7 +49,7 @@ if(isset($_POST['signup'])){
         if($result->rowCount()  > 0){
             $queryResult = $result->fetch();
             $dbh->commit();
-            $fecth_pass = $queryResult['password'];
+            $fetch_pass = $queryResult['password'];
             if(password_verify($password, $fetch_pass)){
                 // retenir l'email et le nom de la personne connectée pendant 5 minutes
                 setcookie(

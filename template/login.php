@@ -80,5 +80,5 @@ if(count($errors) == 1){
     Si utilisateur/trice bien connectée on affiche un message de succès
 -->
 <?php else: ?>
-<meta http-equiv="refresh" content="1; url=../index.php" />
+<meta http-equiv="refresh" content="1; url=?filter" />
 <?php endif; ?>
