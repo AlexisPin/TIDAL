@@ -7,7 +7,7 @@ require_once 'config.php';
   try{
      $dbh = new PDO($dsn);
 
-     require 'create-user-table.php';
+     require_once 'create-user-table.php';
      
      if($dbh){
       echo "<script>console.log(\"Connecté à $db avec succès!\")</script>";
