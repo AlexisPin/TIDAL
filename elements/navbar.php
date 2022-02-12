@@ -5,7 +5,7 @@
     </label>
     <label class="logo">TIDAL</label>
     <ul>
-        <li><a href="?filter">Acceuil</a></li>
+        <li><a href="?filter">Accueil</a></li>
        
         <?php if(!isset($_COOKIE["Username"]) && !isset($_SESSION["connect"])):  ?>
         <li><a href="?login">Connexion</a></li>
