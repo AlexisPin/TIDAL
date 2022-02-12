@@ -8,6 +8,24 @@ if(isset($_POST['signup'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confpassword = $_POST['confpassword'];
+    $userUniqueID = rand(1,2147483647);
+    $userUniqueIDcheck = "SELECT * FROM public.users WHERE userUniqueID = :userUniqueID";
+    $dbh->beginTransaction();
+    $result = $dbh->prepare($userUniqueIDcheck);
+    $result->execute(array(':userUniqueID' => "$userUniqueID"));
+    $queryResult = $result->fetch();
+    $dbh->commit();
+
+    while($result->rowCount() > 0){ //A check
+        $userUniqueID = rand(1,2147483647);
+        $userUniqueIDcheck = "SELECT * FROM public.users WHERE userUniqueID = :userUniqueID";
+        $dbh->beginTransaction();
+        $result = $dbh->prepare($userUniqueIDcheck);
+        $result->execute(array(':userUniqueID' => "$userUniqueID"));
+        $queryResult = $result->fetch();
+        $dbh->commit();
+    }
+
     if($password !== $confpassword){
         $errors['password'] = "Les mots de passe de correspondent pas !";
     }
@@ -23,10 +41,10 @@ if(isset($_POST['signup'])){
     }
     if(count($errors) === 0){
         $encpass = password_hash($password, PASSWORD_BCRYPT);
-        $insert_data = "INSERT INTO public.users(username, email, password) VALUES(:username, :email, :password)";
+        $insert_data = "INSERT INTO public.users(username, email, password, userUniqueID) VALUES(:username, :email, :password, :userUniqueID)";
         $dbh->beginTransaction();
         $result = $dbh->prepare($insert_data);
-        $result->execute(array(":username" => $username,":email" => $email,":password" => $encpass));
+        $result->execute(array(":username" => $username,":email" => $email,":password" => $encpass,":userUniqueID" => $userUniqueID));
         $queryResult = $result->fetchAll();
         $dbh->commit();
         console_log($queryResult);
@@ -55,9 +73,30 @@ if(isset($_POST['signup'])){
             $dbh->commit();
             $fetch_pass = $queryResult['password'];
             if(password_verify($password, $fetch_pass)){
-                session_start();
-                $_SESSION['connect'] = 'true';
+                    
+                $sql = "SELECT * FROM public.users;";
+                $dbh->beginTransaction();
+                $users = $dbh->prepare($sql);
+                $users->execute();
+                $users_data = $users->fetchAll();
+                $dbh->commit();
+                
+                foreach ($users_data as $user) {  
+                    if ($queryResult['username'] == $user["username"]) :
+                        $ID = $user["useruniqueid"];      
+                    endif;
+                }
+                
                 // retenir l'email et le nom de la personne connectée pendant 5 minutes
+                setcookie(
+                    'UserUniqueID',
+                    $ID,
+                    [
+                        'expires' => time() + 5*60,
+                        'secure' => true,
+                        'httponly' => true,
+                    ]
+                );
                 setcookie(
                     'Username',
                     $queryResult['username'],
@@ -77,8 +116,7 @@ if(isset($_POST['signup'])){
                     ]
                 );
               
-            
-                    header('location: ?filter');
+                   header('location: ?filter');
             }else{
                 $errors['email'] = "Mot de passe ou email incorrect !";
             }

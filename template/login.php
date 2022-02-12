@@ -82,9 +82,7 @@ if(count($errors) == 1){
 <?php else: 
     setcookie("Username", "", time()-3600);
     setcookie("Email", "", time()-3600);
-    session_start();
-    unset($_SESSION["connect"]);
-    session_destroy();
+    setcookie("UserUniqueID", "", time()-3600);
     ?>
     <meta http-equiv="refresh" content="1; url=?filter" />
 <?php endif; ?>
