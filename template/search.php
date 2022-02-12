@@ -17,12 +17,12 @@ INNER JOIN public.symptPatho t4 ON t3.idS=t4.idS INNER JOIN public.patho t5 ON t
 
 <h2>Toutes les pathologies : </h2>
 <div class="pathologie-container">
-       <?php foreach($queryResult as $patho_meridien): ?>
+       <?php foreach($queryResult as $each_result): ?>
         <a href="#">
             <div class="patho">
-                <h4><?= $patho_meridien['pathologie'];?></h4>
-                <p><?= $patho_meridien['meridien'];?></p>
-                <p><?= $patho_meridien['symptome'];?></p>
+                <h4>Pathologie : <?= $each_result['pathologie'];?></h4>
+                <p>Méridien : <?= $each_result['meridien'];?></p>
+                <p>Symptome : <?= $each_result['symptome'];?></p>
             </div>
         </a>
         <?php endforeach; ?>

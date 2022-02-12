@@ -7,12 +7,6 @@ function console_log( $data ){
  }
    require 'template/connect.php';
 
-   // while ($row = $pathos->fetch(PDO::FETCH_ASSOC)) {
-   //    echo $row['desc'];
-   //   echo " ";
-   // }
-  
-
    require_once 'elements/header.php';
 
    define('MAIN_PATH', getcwd());
