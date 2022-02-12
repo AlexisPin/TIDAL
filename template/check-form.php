@@ -28,11 +28,12 @@ if (isset($_POST["submit-search"]))
 }
 ?>
 <div class="pathologie-container">
-       <?php foreach($queryResult as $keyword): ?>
+       <?php foreach($queryResult as $each_result): ?>
         <a href="#">
             <div class="patho">
-                <h6>Pathologie : <?= $keyword['pathologie'];?></h4>
-                <h7>Symptome : <?= $keyword['symptome'];?></h4>
+                <h4>Pathologie : <?= $each_result['pathologie'];?></h4>
+                <p>Méridien : <?= $each_result['meridien'];?></p>
+                <p>Symptome : <?= $each_result['symptome'];?></p>
             </div>
         </a>
         <?php endforeach; ?>
