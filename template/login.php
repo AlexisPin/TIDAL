@@ -35,8 +35,7 @@
 // }
 
    //Si utilisateur/trice est non identifié(e), on affiche le formulaire
-
-if(!isset($_COOKIE["Username"])): ?>
+?>
 <form id="connection-form" action="?login" method="POST">
     <?php
     if(count($errors) >= 1){
@@ -52,7 +51,7 @@ if(!isset($_COOKIE["Username"])): ?>
     ?>
     <div class="email-container">
         <label for="email">Email</label>
-        <input type="email" autocomplete="off" name="email" id="email" required>
+        <input type="email" autocomplete="off" name="email" id="email" required value="<?php echo $email ?>">
     </div>
 
     <div class="password-container">
@@ -62,14 +61,3 @@ if(!isset($_COOKIE["Username"])): ?>
     <input type="submit" name="login" value="Se connecter">
     <div class="signup-container">Vous n'avez pas encore de compte ? <a href="?signup">S'inscrire</a></div>
 </form>
-
-<!-- 
-    Si utilisateur/trice bien connectée on affiche un message de succès
--->
-<?php else: 
-    setcookie("Username", "", time()-3600);
-    setcookie("Email", "", time()-3600);
-    setcookie("UserUniqueID", "", time()-3600);
-    ?>
-    <meta http-equiv="refresh" content="1; url=?filter" />
-<?php endif; ?>

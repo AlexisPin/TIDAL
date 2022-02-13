@@ -1,7 +1,11 @@
-<?php 
+<?php
 
+session_start();
+$email = "";
+$username = "";
 $errors = array();
 $succes = array();
+
 //if user signup button
 if(isset($_POST['signup'])){
     $username = $_POST['username'];
@@ -17,7 +21,7 @@ if(isset($_POST['signup'])){
     $queryResult = $result->fetch();
     $dbh->commit();
 
-    while($result->rowCount() > 0){ //A check
+    while($queryResult){ //A check
         $userUniqueID = generateRandomString();
         $userUniqueIDcheck = "SELECT * FROM public.users WHERE userUniqueID = :userUniqueID";
         $dbh->beginTransaction();
@@ -37,7 +41,7 @@ if(isset($_POST['signup'])){
     $queryResult = $result->fetch();
     $dbh->commit();
 
-    if($result->rowCount() > 0){
+    if($queryResult){
         $errors['email'] = "L'email que vous avez entré existe déjà !";
     }
     if(count($errors) === 0){
@@ -48,6 +52,8 @@ if(isset($_POST['signup'])){
         $result->execute(array(":username" => $username,":email" => $email,":password" => $encpass,":userUniqueID" => $userUniqueID));
         $queryResult = $result->fetchAll();
         $dbh->commit();
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
         if($queryResult){
             $succes['succes-register'] = "Votre compte a été crée avec succès, vous pouvez vous connecter dès à présent ";
             $succes['redirection'] = "Vous allez être redirigé vers la page de connexion ";
@@ -59,7 +65,7 @@ if(isset($_POST['signup'])){
         }
     }
 }
-    //if user click login button
+
     if(isset($_POST['login'])){
         $email =  $_POST['email'];
         $password = $_POST['password'];
@@ -67,26 +73,15 @@ if(isset($_POST['signup'])){
         $dbh->beginTransaction();
         $result = $dbh->prepare($check_email);
         $result->execute(array(':email' => "$email"));
-        
-        if($result->rowCount()  > 0){
-            $queryResult = $result->fetch();
-            $dbh->commit();
+        $queryResult = $result->fetch();
+        $dbh->commit();
+
+        if($queryResult){
             $fetch_pass = $queryResult['password'];
             if(password_verify($password, $fetch_pass)){
-                    
-                $sql = "SELECT * FROM public.users;";
-                $dbh->beginTransaction();
-                $users = $dbh->prepare($sql);
-                $users->execute();
-                $users_data = $users->fetchAll();
-                $dbh->commit();
-                
-                foreach ($users_data as $user) {  
-                    if ($queryResult['username'] == $user["username"]) :
-                        $ID = $user["useruniqueid"];      
-                    endif;
-                }
-                
+                $_SESSION['email'] = $email;
+                $_SESSION['password'] = $password;
+                $ID = $queryResult["useruniqueid"];      
                 // retenir l'email et le nom de la personne connectée pendant 5 minutes
                 setcookie(
                     'UserUniqueID',
@@ -115,7 +110,6 @@ if(isset($_POST['signup'])){
                         'httponly' => true,
                     ]
                 );
-              
                    header('location: ?filter');
             }else{
                 $errors['email'] = "Mot de passe ou email incorrect !";
