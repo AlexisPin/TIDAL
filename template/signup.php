@@ -31,43 +31,30 @@ require_once "dataUserController.php";
 <h1>S'inscrire</h1>
 <form id="connection-form" action="?signup" method="POST" autocomplete="on">
     <?php
-    if(count($succes) == 1){
-        ?>
-    <div class="succes-container">
-        <?php
+    if(count($succes) >= 1){
     foreach($succes as $showsucces){
-        ?><li><?php echo $showsucces;?></li><?php
-    }
+    ?>
+    <div class="succes-container">
+        <?php echo $showsucces; ?>
+    <?php
     ?>
     </div>
     <?php 
+    }
     } 
     ?>
     <?php
-    if(count($errors) == 1){
-        ?>
-    <div class="error-container">
+    if(count($errors) >= 1){
+        foreach($errors as $showerror){
+            ?>
+        <div class="error-container">
+            <?php echo $showerror;
+            ?>
+        </div>
         <?php
-    foreach($errors as $showerror){
-        echo $showerror;
+        }
     }
     ?>
-    </div>
-    <?php
-        }elseif(count($errors) > 1){
-            ?>
-    <div class="error-container">
-        <?php
-    foreach($errors as $showerror){
-        ?>
-        <li><?php echo $showerror; ?></li>
-        <?php
-        }
-        ?>
-    </div>
-    <?php
-        }
-        ?>
     <div class="pseudo-container">
         <label for="username">Nom d'utilisateur</label>
         <input type="text" autocomplete="on" name="username" id="username" required>

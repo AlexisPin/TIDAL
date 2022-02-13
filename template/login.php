@@ -39,30 +39,17 @@
 if(!isset($_COOKIE["Username"])): ?>
 <form id="connection-form" action="?login" method="POST">
     <?php
-if(count($errors) == 1){
-        ?>
-    <div class="error-container">
+    if(count($errors) >= 1){
+        foreach($errors as $showerror){
+            ?>
+        <div class="error-container">
+            <?php echo $showerror;
+            ?>
+        </div>
         <?php
-    foreach($errors as $showerror){
-        echo $showerror;
+        }
     }
     ?>
-    </div>
-    <?php
-        }elseif(count($errors) > 1){
-            ?>
-    <div class="error-container">
-        <?php
-    foreach($errors as $showerror){
-        ?>
-        <li><?php echo $showerror; ?></li>
-        <?php
-        }
-        ?>
-    </div>
-    <?php
-        }
-        ?>
     <div class="email-container">
         <label for="email">Email</label>
         <input type="email" autocomplete="off" name="email" id="email" required>

@@ -8,7 +8,8 @@ if(isset($_POST['signup'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confpassword = $_POST['confpassword'];
-    $userUniqueID = rand(1,2147483647);
+    $userUniqueID = generateRandomString();
+    console_log($userUniqueID);
     $userUniqueIDcheck = "SELECT * FROM public.users WHERE userUniqueID = :userUniqueID";
     $dbh->beginTransaction();
     $result = $dbh->prepare($userUniqueIDcheck);
@@ -17,7 +18,7 @@ if(isset($_POST['signup'])){
     $dbh->commit();
 
     while($result->rowCount() > 0){ //A check
-        $userUniqueID = rand(1,2147483647);
+        $userUniqueID = generateRandomString();
         $userUniqueIDcheck = "SELECT * FROM public.users WHERE userUniqueID = :userUniqueID";
         $dbh->beginTransaction();
         $result = $dbh->prepare($userUniqueIDcheck);
@@ -47,10 +48,9 @@ if(isset($_POST['signup'])){
         $result->execute(array(":username" => $username,":email" => $email,":password" => $encpass,":userUniqueID" => $userUniqueID));
         $queryResult = $result->fetchAll();
         $dbh->commit();
-        console_log($queryResult);
-        console_log($result);
         if($queryResult){
             $succes['succes-register'] = "Votre compte a été crée avec succès, vous pouvez vous connecter dès à présent ";
+            $succes['redirection'] = "Vous allez être redirigé vers la page de connexion ";
             ?>
             <meta http-equiv="refresh" content="3; url=?login" />
             <?php

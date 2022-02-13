@@ -36,6 +36,9 @@ function console_log( $data ){
       case '/?check-form':
          require 'template/check-form.php';
          break;  
+      default :
+         require 'template/filter.php';
+         break;
    }
 
    require_once 'elements/footer.php';
