@@ -14,7 +14,7 @@ if (isset($_POST["submit-search"]))
  $search = strip_tags($search); //supprime les balise html
  $search = strtolower($search);
 
- $sql = "SELECT DISTINCT t2.idS, t5.desc as pathologie, t1.name as keywords, t6.nom as meridien, t3.desc as symptome FROM public.keywords t1 INNER JOIN public.keySympt t2 ON t1.idK = t2.idK INNER JOIN public.symptome t3 ON t2.idS=t3.idS 
+ $sql = "SELECT DISTINCT t5.desc as pathologie, t6.nom as meridien, t3.desc as symptome FROM public.keywords t1 INNER JOIN public.keySympt t2 ON t1.idK = t2.idK INNER JOIN public.symptome t3 ON t2.idS=t3.idS 
  INNER JOIN public.symptPatho t4 ON t3.idS=t4.idS INNER JOIN public.patho t5 ON t4.idP=t5.idP INNER JOIN public.meridien t6 ON t5.mer = t6.code WHERE t1.name LIKE :search";
  $dbh->beginTransaction();
  $result = $dbh->prepare($sql);
@@ -29,11 +29,12 @@ if (isset($_POST["submit-search"]))
 }
 ?>
 <div class="pathologie-container">
-       <?php foreach($queryResult as $keyword): ?>
+       <?php foreach($queryResult as $each_result): ?>
         <a href="#">
             <div class="patho">
-                <h6>Pathologie : <?= $keyword['pathologie'];?></h4>
-                <h7>Symptome : <?= $keyword['symptome'];?></h4>
+                <h4>Pathologie : <?= $each_result['pathologie'];?></h4>
+                <p>Méridien : <?= $each_result['meridien'];?></p>
+                <p>Symptome : <?= $each_result['symptome'];?></p>
             </div>
         </a>
         <?php endforeach; ?>

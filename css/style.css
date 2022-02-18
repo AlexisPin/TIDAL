@@ -46,7 +46,8 @@ nav ul li a{
   text-transform: uppercase;
   text-decoration: none;
 }
-nav ul li a:hover{
+nav ul li a:hover,
+nav ul li a.active{
   background: #1b9bff;
   color: wheat;
   transition: .5s;
@@ -63,24 +64,20 @@ nav ul li a:hover{
 #check{
   display: none;
 }
-@media (max-width: 858px){
+
+@media (max-width: 1020px){
+  label.logo{
+    font-size: 30px;
+    padding-left: 2rem;
+  }
+  nav ul li a{
+    font-size: 16px;
+  }
+}
+@media (max-width: 960px){
   .checkbtn{
     display: block;
     margin: 20px;
-  }
-  label.logo{
-    font-size: 30px;
-    padding-left: 50px;
-  }
-  nav ul{
-    position: fixed;
-    width: 100%;
-    height: 280px;
-    background: #2c3e50;
-    top: 5rem;
-    right: -110%;
-    text-align: center;
-    transition: all .5s;
   }
   nav ul li{
     display: block;
@@ -90,7 +87,19 @@ nav ul li a:hover{
   nav ul li a{
     font-size: 1em;
   }
-  nav ul li a:hover{
+  ul{
+    position: fixed;
+    width: 100%;
+    height: 280px;
+    background: #2c3e50;
+    top: 5rem;
+    right: -110%;
+    text-align: center;
+    transition: all .5s;
+  }
+  nav ul li a:hover,
+  nav ul li a.active
+  {
     background: none;
     color: #0082e6;
   }
@@ -102,15 +111,24 @@ nav ul li a:hover{
 
 /************Bibliographie ****************************/
 
-.bibliography {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10%;
-  flex-flow: column wrap;
+.bibliography-container {
   background-color: var(--Background_2);
   border-radius: 2rem;
+  position: absolute;
+  width: 70vw;
+  height: 80vh;
+  margin-top: 1rem;
+  top : 50%;
+  left : 50%;
+  transform: translate(-50%,-50%);
 }
+
+.bibliography-container .title{
+  text-align: center;
+  padding : 10px;
+  text-decoration: underline;
+}
+
 .content {
   margin: 10%;
 }
@@ -342,4 +360,14 @@ input[type="text"]:focus {
   cursor: pointer;
   background-color: rgb(39, 89, 197);
   transition: background-color 500ms linear;
+}
+
+
+/**********************Profil**********************/
+
+#welcome-message{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
 }

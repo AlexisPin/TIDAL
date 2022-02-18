@@ -1,81 +1,41 @@
 <?php
-
 require_once "dataUserController.php";
+?>
 
-// $sql = "SELECT * FROM public.users;";
-// $dbh->beginTransaction();
-// $users = $dbh->prepare($sql);
-// $users->execute();
-
-// Validation du formulaire
-// if (isset($_POST["username"]) && isset($_POST['email']) &&  isset($_POST['password'])) {
-//     $Username = $_POST["Username"];
-//     $Email = $_POST["email"];
-//     $Pass_word = $_POST["password"];
-
-//     $sql = "$sql = 'SELECT * FROM public.users";
-//     $dbh->beginTransaction();
-//     try {
-//         $sth = $dbh->prepare($sql);
-//         $sth->execute(array('Username' => $Username , 'Email' => $Email , 'pass_word' => $Pass_word));
-//         $data = $sth->fetchAll();
-//         $dbh->commit();
-//     } 
-//     catch(PDOException $e) {
-//         echo "SUPER";
-//         $dbh->rollback();
-//     }
-// }
-// ?>
-
-<h1>S'inscrire</h1>
 <form id="connection-form" action="?signup" method="POST" autocomplete="on">
     <?php
-    if(count($succes) == 1){
+    if(count($succes) >= 1){
+        foreach($succes as $showsucces){
         ?>
-    <div class="succes-container">
+        <div class="succes-container">
+            <?php echo $showsucces; ?>
         <?php
-    foreach($succes as $showsucces){
-        echo $showsucces;
-    }
-    ?>
-    </div>
-    <?php 
+        ?>
+        </div>
+        <?php 
+        }
     } 
     ?>
     <?php
-    if(count($errors) == 1){
-        ?>
-    <div class="error-container">
+    if(count($errors) >= 1){
+        foreach($errors as $showerror){
+            ?>
+        <div class="error-container">
+            <?php echo $showerror;
+            ?>
+        </div>
         <?php
-    foreach($errors as $showerror){
-        echo $showerror;
+        }
     }
     ?>
-    </div>
-    <?php
-        }elseif(count($errors) > 1){
-            ?>
-    <div class="error-container">
-        <?php
-    foreach($errors as $showerror){
-        ?>
-        <li><?php echo $showerror; ?></li>
-        <?php
-        }
-        ?>
-    </div>
-    <?php
-        }
-        ?>
     <div class="pseudo-container">
         <label for="username">Nom d'utilisateur</label>
-        <input type="text" autocomplete="on" name="username" id="username" required>
+        <input type="text" autocomplete="on" name="username" id="username" required value="<?php echo $username ?>">
     </div>
 
     <div class="email-container">
         <label for="email">Email</label>
-        <input type="email" autocomplete="on" name="email" id="email" required>
+        <input type="email" autocomplete="on" name="email" id="email" required value="<?php echo $email ?>">
     </div>
 
     <div class="password-container">

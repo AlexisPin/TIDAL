@@ -1,16 +1,11 @@
 <?php
+
 function console_log( $data ){
    echo '<script>';
    echo 'console.log('. json_encode( $data ) .')';
    echo '</script>';
  }
-   require 'template/connect.php';
-
-   // while ($row = $pathos->fetch(PDO::FETCH_ASSOC)) {
-   //    echo $row['desc'];
-   //   echo " ";
-   // }
-  
+   require_once 'template/connect.php';
 
    require_once 'elements/header.php';
 
@@ -41,6 +36,18 @@ function console_log( $data ){
       case '/?check-form':
          require 'template/check-form.php';
          break;  
+      case '/?logout':
+         require 'template/logout.php';
+         break; 
+      case '/?profil':
+         require 'template/profil.php';
+         break; 
+      case '/?bibliographie':
+         require 'template/bibliographie.php';
+         break; 
+      default :
+         require 'template/filter.php';
+         break;
    }
 
    require_once 'elements/footer.php';
