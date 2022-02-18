@@ -1,30 +1,30 @@
 <?php
-require_once "dataUserController.php";
+require_once "src/controller/dataUserController.php";
 ?>
 
 <form id="connection-form" action="?signup" method="POST" autocomplete="on">
     <?php
-    if(count($succes) >= 1){
-        foreach($succes as $showsucces){
-        ?>
-        <div class="succes-container">
-            <?php echo $showsucces; ?>
-        <?php
-        ?>
-        </div>
-        <?php 
+    if (count($succes) >= 1) {
+        foreach ($succes as $showsucces) {
+    ?>
+            <div class="succes-container">
+                <?php echo $showsucces; ?>
+                <?php
+                ?>
+            </div>
+    <?php
         }
-    } 
+    }
     ?>
     <?php
-    if(count($errors) >= 1){
-        foreach($errors as $showerror){
-            ?>
-        <div class="error-container">
-            <?php echo $showerror;
-            ?>
-        </div>
-        <?php
+    if (count($errors) >= 1) {
+        foreach ($errors as $showerror) {
+    ?>
+            <div class="error-container">
+                <?php echo $showerror;
+                ?>
+            </div>
+    <?php
         }
     }
     ?>

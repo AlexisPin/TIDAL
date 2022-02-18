@@ -1,29 +1,22 @@
 <div class="search-form">
-    <form action="?check-form" method="POST">
+    <form action="?search" method="POST">
         <input type="search" name="search" placeholder="Rechercher une pathologie ...">
         <input type="submit" name="submit-search" value="Rechercher">
     </form>
 </div>
 
-<?php 
-       $sql = "SELECT name as keywords, t6.nom as meridien, t3.desc as symptome, t5.desc as pathologie  FROM public.keywords t1 INNER JOIN public.keySympt t2 ON t1.idK = t2.idK INNER JOIN public.symptome t3 ON t2.idS=t3.idS 
-INNER JOIN public.symptPatho t4 ON t3.idS=t4.idS INNER JOIN public.patho t5 ON t4.idP=t5.idP INNER JOIN public.meridien t6 ON t5.mer = t6.code ORDER BY pathologie";
-       $dbh->beginTransaction();
-       $result = $dbh->prepare($sql);
-       $result->execute();
-       $queryResult = $result->fetchAll();
-       $dbh->commit();
-       ?>
+<?php
+require 'src/model/searchResult.php';
+?>
 
-<h2>Toutes les pathologies : </h2>
 <div class="pathologie-container">
-       <?php foreach($queryResult as $each_result): ?>
+    <?php foreach ($queryResult as $each_result) { ?>
         <a href="#">
             <div class="patho">
-                <h4>Pathologie : <?= $each_result['pathologie'];?></h4>
-                <p>Méridien : <?= $each_result['meridien'];?></p>
-                <p>Symptome : <?= $each_result['symptome'];?></p>
+                <h4>Pathologie : <?= $each_result['pathologie']; ?></h4>
+                <p>Méridien : <?= $each_result['meridien']; ?></p>
+                <p>Symptome : <?= $each_result['symptome']; ?></p>
             </div>
         </a>
-        <?php endforeach; ?>
+    <?php } ?>
 </div>
