@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 $email = "";
 $username = "";
 $errors = array();
@@ -12,16 +11,11 @@ if(isset($_POST['signup'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confpassword = $_POST['confpassword'];
-    $userUniqueID = generateRandomString();
-    console_log($userUniqueID);
-    $userUniqueIDcheck = "SELECT * FROM public.users WHERE userUniqueID = :userUniqueID";
-    $dbh->beginTransaction();
-    $result = $dbh->prepare($userUniqueIDcheck);
-    $result->execute(array(':userUniqueID' => "$userUniqueID"));
-    $queryResult = $result->fetch();
-    $dbh->commit();
 
-    while($queryResult){ //A check
+    $userUniqueID = generateRandomString();
+    
+    $queryResult = true;
+    while($queryResult){ 
         $userUniqueID = generateRandomString();
         $userUniqueIDcheck = "SELECT * FROM public.users WHERE userUniqueID = :userUniqueID";
         $dbh->beginTransaction();
@@ -79,8 +73,6 @@ if(isset($_POST['signup'])){
         if($queryResult){
             $fetch_pass = $queryResult['password'];
             if(password_verify($password, $fetch_pass)){
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
                 $ID = $queryResult["useruniqueid"];      
                 // retenir l'email et le nom de la personne connectée pendant 5 minutes
                 setcookie(
