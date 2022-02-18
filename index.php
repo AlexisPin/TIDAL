@@ -27,7 +27,6 @@ switch ($uri) {
       break;
    case '/?search':
       if ($flag_connexion) {
-         console_log("test");
          require 'template/search.php';
       } else {
          require 'template/login.php';
