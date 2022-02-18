@@ -20,6 +20,7 @@ if (isset($_POST["submit-search"]))
  $result = $dbh->prepare($sql);
  $result->execute(array(':search' => "%$search%"));
  $queryResult = $result->fetchAll();
+ 
  $dbh->commit();
     console_log($queryResult);
  $count = $result->rowCount();

@@ -49,7 +49,7 @@ if(isset($_POST['signup'])){
         if($result->rowCount()  > 0){
             $queryResult = $result->fetch();
             $dbh->commit();
-            $fecth_pass = $queryResult['password'];
+            $fetch_pass = $queryResult['password'];
             if(password_verify($password, $fetch_pass)){
                 // retenir l'email et le nom de la personne connectée pendant 5 minutes
                 setcookie(
