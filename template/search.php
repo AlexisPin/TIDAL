@@ -9,7 +9,7 @@
 require 'src/model/searchResult.php';
 ?>
 
-<div class="pathologie-container">
+<div class="result">
     <?php foreach ($queryResult as $each_result) { ?>
         <a href="#">
             <div class="patho">
