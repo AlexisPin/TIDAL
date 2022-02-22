@@ -17,13 +17,10 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
     <div class="sidebar">
         <div class="filter-header">
             <h1>Filtres</h1>
-            <input type="submit" class="filter-submit" value="Filtrer">
-            <input type="reset" class="filter-submit" value="Reset">
         </div>
-        <div class="meridien">
+        <div class="select_box">
             <h3>Méridien</h3>
             <select name="meridien[]" id="meridien-select" multiple>
-                <option value="">--Choisissez un méridien--</option>
                 <?php
                 if (isset($_POST['meridien'])) {
                     $selected = $_POST['meridien'];
@@ -36,10 +33,9 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
                 <?php } ?>
             </select>
         </div>
-        <div class="type">
+        <div class="select_box">
             <h3>Type de pathologie</h3>
             <select name="type[]" id="type-select" multiple>
-                <option value="">--Choisissez un type de pathologie--</option>
                 <?php
                 if (isset($_POST['type'])) {
                     $selected = $_POST['type'];
@@ -52,10 +48,9 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
                 <?php } ?>
             </select>
         </div>
-        <div class="caracteristique">
+        <div class="select_box">
             <h3>Caractéristiques</h3>
             <select name="caracteristique[]" id="caracteristique-select" multiple>
-                <option value="">--Choisissez une caractéristique--</option>
                 <?php
                 if (isset($_POST['caracteristique'])) {
                     $selected = $_POST['caracteristique'];
@@ -68,7 +63,12 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
                 <?php } ?>
             </select>
         </div>
+        <div class="zone_bouton">
+            <input type="submit" class="btn_filtrer" value="Filtrer">
+            <input type="reset" class="btn_reset" value="Reset">
+        </div>
     </div>
+    
 </form>
 <div class="result">
     <?php
