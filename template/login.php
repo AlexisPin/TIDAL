@@ -1,51 +1,17 @@
 <?php
- require_once "dataUserController.php";
-
-
-// $users = [
-//     [
-//     'Name' => 'Tidal tidal',
-//     'email' => 'tidal@tidal.tidal',
-//     'password' =>  'tidal',
-//     ],
-// ];
-
-// Validation du formulaire
-// if (isset($_POST['email']) &&  isset($_POST['password'])) {
-//     foreach ($users as $user) {
-//         if (
-//             $user['email'] === $_POST['email'] &&
-//             $user['password'] === $_POST['password']
-//         ) {
-//             // retenir l'email et le nom de la personne connectée pendant 5 minutes
-//             setcookie(
-//                 'Username',
-//                 $user['Name'],
-//                 [userID smallint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 ) PRIMARY KEY,re' => true,
-//                     'httponly' => true,
-//                 ]
-//                 );
-//         } else {
-//             $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
-//                 $_POST['email'],
-//                 $_POST['passwordset'],
-//             );
-//         }
-//     }
-// }
-
-   //Si utilisateur/trice est non identifié(e), on affiche le formulaire
+require_once "src/controller/dataUserController.php";
 ?>
+
 <form id="connection-form" action="?login" method="POST">
     <?php
-    if(count($errors) >= 1){
-        foreach($errors as $showerror){
-            ?>
-        <div class="error-container">
-            <?php echo $showerror;
-            ?>
-        </div>
-        <?php
+    if (count($errors) >= 1) {
+        foreach ($errors as $showerror) {
+    ?>
+            <div class="error-container">
+                <?php echo $showerror;
+                ?>
+            </div>
+    <?php
         }
     }
     ?>

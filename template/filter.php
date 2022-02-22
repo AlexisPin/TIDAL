@@ -18,6 +18,7 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
         <div class="filter-header">
             <h1>Filtres</h1>
             <input type="submit" class="filter-submit" value="Filtrer">
+            <input type="reset" class="filter-submit" value="Reset">
         </div>
         <div class="meridien">
             <h3>Méridien</h3>

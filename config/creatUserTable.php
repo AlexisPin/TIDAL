@@ -20,6 +20,6 @@
         }
         return $randomString;
     }
-      echo "<script>console.log(\"Table bien crée ! \")</script>";
 
-?>
+    
+      echo "<script>console.log(\"Table bien crée ! \")</script>";
