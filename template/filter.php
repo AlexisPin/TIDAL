@@ -64,11 +64,11 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
             </select>
         </div>
         <div class="zone_bouton">
-            <input type="submit" class="btn" id="btn_filter" value="Filtrer">
+            <input type="submit" class="btn" id="btn_filter" value="Filtrer" />
             <input type="reset" class="btn" id="btn_reset" value="Reset">
         </div>
     </div>
-    
+
 </form>
 <div class="result">
     <?php
