@@ -24,7 +24,6 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
                 <?php
                 if (isset($_POST['meridien'])) {
                     $selected = $_POST['meridien'];
-                    console_log($selected);
                 }
                 foreach ($meridiens_data as $meridien) { ?>
                     <option value="<?= $meridien['code']; ?>" <?php if (in_array($meridien['code'], $selected)) {
@@ -39,7 +38,6 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
                 <?php
                 if (isset($_POST['type'])) {
                     $selected = $_POST['type'];
-                    console_log($selected);
                 }
                 foreach ($typeList as $type => $value) { ?>
                     <option value="<?= $type; ?>" <?php if (in_array($type, $selected)) {
@@ -54,7 +52,6 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
                 <?php
                 if (isset($_POST['caracteristique'])) {
                     $selected = $_POST['caracteristique'];
-                    console_log($selected);
                 }
                 foreach ($caracteristicList as $caracteristique => $value) { ?>
                     <option value="<?= $caracteristique; ?>" <?php if (in_array($caracteristique, $selected)) {
@@ -239,7 +236,6 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
                 }
                 break;
             case $conditions[6]:
-                console_log("ALL");
                 $filterChecked = [$_POST['meridien'], $_POST['type'], $_POST['caracteristique']];
                 $specified_sql = "WHERE t2.mer IN (:meridiens) AND t2.type LIKE (:comb) ;";
                 $sql .= $specified_sql;

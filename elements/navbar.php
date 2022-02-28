@@ -18,7 +18,7 @@
         <i class="fas fa-bars"></i>
     </label>
     <label class="logo">TIDAL</label>
-    <ul>
+    <ul id='path'  class='connected'>
         <li><a href="?filter" class=<?php if ($uri == '/?filter' || $uri == '/') {
                                         echo "active";
                                     } ?>> Accueil</a></li>
@@ -42,3 +42,13 @@
                                             } ?>>Bibliographie</a></li>
     </ul>
 </nav>
+
+<script type="text/javascript">
+    const link = document.querySelector('#path');
+    var isConnect ="<?php echo json_encode($flag_connexion); ?>" ;
+    var isTrueSet = (isConnect === 'true');
+    link.classList.remove('connected');
+    if(isTrueSet) {
+        link.classList.add('connected');
+    } 
+</script>
