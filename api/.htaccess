@@ -1,0 +1,3 @@
+RewriteEngine On 
+RewriteRule ^users/?$ users.php [L,NC]
+RewriteRule ^[^/]+/(\d+)$ users.php?id=$1

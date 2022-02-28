@@ -50,9 +50,12 @@ nav ul li a.active{
   color: white;
   float: right;
   line-height: 5rem;
-  margin-right: 40px;
+  margin-right: auto;
   cursor: pointer;
   display: none;
+}
+.checkbtn i{
+  padding : 10px;
 }
 #check{
   display: none;
@@ -70,7 +73,7 @@ nav ul li a.active{
 @media (max-width: 960px){
   .checkbtn{
     display: block;
-    margin: 20px;
+    margin: auto;
   }
   nav ul li{
     display: block;
@@ -83,7 +86,7 @@ nav ul li a.active{
   ul{
     position: fixed;
     width: 100%;
-    height: 280px;
+    height: 330px;
     background: #2c3e50;
     top: 5rem;
     right: -110%;

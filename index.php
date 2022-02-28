@@ -8,6 +8,9 @@ function console_log($data)
 }
 require_once 'config/connectDB.php';
 
+$database = new Database();
+$dbh = $database->connect();
+
 require_once 'elements/header.php';
 
 define('MAIN_PATH', getcwd());

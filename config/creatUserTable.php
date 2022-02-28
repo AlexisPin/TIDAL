@@ -9,7 +9,7 @@
       UNIQUE(email),
       UNIQUE(userUniqueID))";
 
-      $dbh->exec($sql);
+      $this->conn->exec($sql);
 
     function generateRandomString($length = 25) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -20,6 +20,3 @@
         }
         return $randomString;
     }
-
-    
-      echo "<script>console.log(\"Table bien crée ! \")</script>";

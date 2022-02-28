@@ -9,7 +9,7 @@
     flex-flow: row wrap;
     padding-top: 5rem;
   }
-  
+
   .result a {
     border-radius: 1rem;
     background-color: var(--Background_1);
