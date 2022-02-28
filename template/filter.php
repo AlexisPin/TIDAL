@@ -62,7 +62,7 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
         </div>
         <div class="zone_bouton">
             <input type="submit" class="btn" id="btn_filter" value="Filtrer" />
-            <input type="reset" class="btn" id="btn_reset" value="Reset">
+            <input type="submit" class="btn" id="btn_reset" value="Reset">
         </div>
     </div>
 
@@ -289,3 +289,16 @@ $sql = "SELECT t1.code as code, t1.nom as meridien, t4.desc as symptome, t2.desc
     }
     ?>
 </div>
+
+<script type="text/javascript">
+    const resetBtn = document.getElementById('btn_reset');
+    const meridienSelect = document.getElementById('meridien-select');
+    const typeSelect = document.getElementById('type-select');
+    const caracteristiqueSelect = document.getElementById('caracteristique-select');
+
+    resetBtn.addEventListener('click', () => {
+        meridienSelect.selectedIndex = -1;
+        typeSelect.selectedIndex = -1;
+        caracteristiqueSelect.selectedIndex = -1;
+    })
+</script>
