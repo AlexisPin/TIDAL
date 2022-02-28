@@ -1,0 +1,86 @@
+
+/*************************SideBar *******************************/
+.sidebar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column wrap;
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    background-color: var(--Background_3);
+    overflow-x: hidden;
+    margin-top: 5rem;
+    color: var(--Background_1);
+  }
+  
+  .sidebar h1 {
+    font-size: 1.5em;
+    color: var(--Background_1);
+    line-height: 70px;
+    user-select: none;
+  }
+  
+  .sidebar select {
+    margin-bottom: 2em;
+    max-width: 13vw;
+  }
+  .sidebar h3 {
+    text-align: center;
+    font-size: 1em;
+  }
+  .filter-header {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+  }
+  
+/***PARTIE BOUTON***/
+
+.zone_bouton {
+    align-items: center;
+}
+
+.btn {
+    border: none;
+    width: 5vw;
+}
+
+#btn_filter {
+  background-color: var(--Background_4);
+  color: inherit;
+}
+
+#btn_reset {
+    background-color: var(--Background_2);
+    color: inherit;
+  }
+  
+/***PARTIE SELECT***/
+
+select {
+    width: 100%;
+    background-color: var(--Background_4);
+    border: none;
+    text-align: center;
+    color: var(--Background_1);
+}
+
+#meridien-select {
+    height: 10vh;
+}
+
+#type-select {
+    height: 11vh;
+    overflow-y: hidden;
+}
+
+#caracteristique-select {
+    height: 13vh;
+    overflow-y: hidden;
+}
+
+.select_box {
+    width: 100%;
+    text-align: center;
+}

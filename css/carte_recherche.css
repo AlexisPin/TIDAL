@@ -1,0 +1,65 @@
+/**********************Pathologies afficher ****************************/
+.result {
+    background-color: var(--Background_1);
+    width: 85%;
+    margin-left: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    padding-top: 5rem;
+  }
+  
+  .result a {
+    border-radius: 1rem;
+    background-color: var(--Background_1);
+    text-decoration: none;
+    margin: 5px;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .result a:hover {
+    background-color: var(--Background_1);
+  }
+
+  .patho:hover{
+    border-top: 3px solid var(--Background_4);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .patho {
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+
+    box-shadow: 0px 10px 20px 5px var(--Shadow);
+    background-color: var(--Background_1);
+    border-top: 3px solid var(--Background_2);
+    width: 22vw;
+    min-height: 100px;
+    color: black;
+    margin: 15px;
+    border-radius: 10px;
+    height: 300px;
+
+    padding: 0.2rem;
+}
+  
+  .patho h4 {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--Background_2);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .patho:hover h4 {
+      color: var(--Background_4);
+      transition: all 0.5s ease-in-out;
+  }
+
+  .patho p {
+      text-align: center;
+  }
