@@ -6,7 +6,7 @@ function console_log($data)
    echo 'console.log(' . json_encode($data) . ')';
    echo '</script>';
 }
-require_once 'config/connectDB.php';
+require_once 'config/Database.php';
 
 $database = new Database();
 $dbh = $database->connect();
