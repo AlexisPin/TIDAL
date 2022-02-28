@@ -27,15 +27,15 @@
                                             echo "active";
                                         } ?>>Connexion</a></li>
         <?php else :  ?>
-            <li><a href="?logout" class=<?php if ($uri == '/?logout') {
-                                            echo "active";
-                                        } ?>>Deconnexion</a></li>
             <li><a href="?profil" class=<?php if ($uri == '/?profil') {
                                             echo "active";
                                         } ?>>Profil</a></li>
             <li><a href="?search" class=<?php if ($uri == '/?search') {
                                             echo "active";
                                         } ?>>Recherche avancée</a></li>
+             <li><a href="?logout" class=<?php if ($uri == '/?logout') {
+                                            echo "active";
+                                        } ?>>Deconnexion</a></li>
         <?php endif; ?>
         <li><a href="?bibliographie" class=<?php if ($uri == '/?bibliographie') {
                                                 echo "active";
