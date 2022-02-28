@@ -13,7 +13,7 @@ nav{
   height: 5rem;
   width: 100%;
   position: fixed;
-  z-index: 2;
+  overflow: hidden;
 }
 label.logo{
   color: white;
@@ -224,12 +224,10 @@ nav ul li a.active{
   /**************************Barre de recherche******************************/
   
   .search-form {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
     width: 80vw;
     height: 30px;
+    padding-top: 5rem;
+    margin: auto;
   }
   
   .search-form form {
@@ -259,6 +257,12 @@ nav ul li a.active{
     transition: background-color 500ms linear;
   }
   
+
+/**************Recherche_avance******************/
+#result_rch_avance{
+  width: 100%;
+  margin-left: 0rem;
+}
   
 /**********************Profil**********************/
 
