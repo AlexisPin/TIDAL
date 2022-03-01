@@ -64,7 +64,7 @@ switch ($uri) {
       require 'template/pathologie.php';
       break;
    default:
-      require 'template/home.php';
+      header('Location: /');
       break;
 }
 require_once 'elements/footer.php';
