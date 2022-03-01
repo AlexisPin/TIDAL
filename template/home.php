@@ -3,7 +3,6 @@ $selected = [];
 $typeList = ['m' => "méridien", 'tf' => "organe/viscère", 'l' => "voie luo", 'mv' => "merveilleux vaisseaux", 'j' => "jing jin"];
 $caracteristicList = ['p' => 'plein', 'c' => 'chaud', 'v' => 'vide', 'f' => 'froid', 'i' => 'interne', 'e' => 'externe'];
 
-include_once 'models/Pathologie.php';
 $pathologie = new Pathologie($dbh);
 
 ?>

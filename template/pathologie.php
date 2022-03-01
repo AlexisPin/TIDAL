@@ -14,7 +14,7 @@ $pathologie = new Pathologie($dbh);
 
 $pathologie->id = intval($_GET["id"]);
 $result = $pathologie->read_single();
-$symptomes = explode(",", $result['symptome']);
+$symptomes = explode("-", $result['symptome']);
 
 ?>
 <div class="result" id='result_rch_avance'>

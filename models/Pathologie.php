@@ -21,9 +21,7 @@ class Pathologie
         $query = "SELECT t1.nom as meridien, t2.desc as pathologie, t2.idP as id FROM meridien t1 LEFT JOIN patho t2 ON t2.mer = t1.code ";
 
         $sql = $this->conn->prepare($query);
-
         $sql->execute();
-
         $sql->setFetchMode(PDO::FETCH_CLASS, 'Pathologie');
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;
@@ -31,15 +29,13 @@ class Pathologie
 
     public function read_single()
     {
-        $query = "SELECT   t1.nom as meridien, t2.desc as pathologie, string_agg(t4.desc, ',') AS symptome FROM meridien t1 LEFT JOIN patho t2 ON t2.mer = t1.code 
+        $query = "SELECT   t1.nom as meridien, t2.desc as pathologie, string_agg(t4.desc, '-') AS symptome FROM meridien t1 LEFT JOIN patho t2 ON t2.mer = t1.code 
         LEFT JOIN symptPatho t3 ON t2.idP = t3.idP LEFT JOIN symptome t4 ON t3.idS = t4.idS WHERE t2.idP = :id GROUP BY pathologie,meridien ";
 
         $sql = $this->conn->prepare($query);
         $sql->bindParam(':id', $this->id);
         $sql->execute();
-
         $row = $sql->fetch(PDO::FETCH_ASSOC);
-
         return $row;
     }
 

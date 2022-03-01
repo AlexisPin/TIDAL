@@ -7,6 +7,7 @@ function console_log($data)
    echo '</script>';
 }
 require_once 'config/Database.php';
+require_once 'models/Pathologie.php';
 
 $database = new Database();
 $dbh = $database->connect();
@@ -39,6 +40,11 @@ switch ($uri) {
       }
       break;
    case '/?signup':
+      if ($flag_connexion) {
+         header('Location: /');
+      } else {
+         require 'template/signup.php';
+      }
       require 'template/signup.php';
       break;
    case '/?logout':

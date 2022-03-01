@@ -6,8 +6,6 @@
 </div>
 
 <?php
-include_once 'models/Pathologie.php';
-$pathologie = new Pathologie($dbh);
 require 'src/controller/searchResult.php';
 ?>
 

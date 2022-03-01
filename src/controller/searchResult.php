@@ -1,5 +1,6 @@
 <?php
 
+$pathologie = new Pathologie($dbh);
 if (isset($_POST["submit-search"]) && $_POST["search"] != null) {
     $_POST["search"] = htmlspecialchars($_POST["search"]);
     $search = $_POST["search"];

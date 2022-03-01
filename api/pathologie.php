@@ -14,10 +14,10 @@ $pathologie = new Pathologie($db);
 
 if (!empty($_GET["query"])) {
     $pathologie->keyword = $_GET["query"];
-    $result = $pathologie->search();
-    $num = $result->rowCount();
+    $result = $pathologie->searchByKeyword();
+    $num = count($result);
     if ($num > 0) {
-        $row = $result->fetchAll(PDO::FETCH_ASSOC);
+        $row = $result;
         $pathologies_array = array();
         $pathologies_array['data'] = array();
         array_push($pathologies_array['data'], ...$row);
@@ -29,9 +29,9 @@ if (!empty($_GET["query"])) {
     }
 } else {
     $result = $pathologie->read();
-    $num = $result->rowCount();
+    $num = count($result);
     if ($num > 0) {
-        $row = $result->fetchAll(PDO::FETCH_ASSOC);
+        $row = $result;
         $pathologies_array = array();
         $pathologies_array['data'] = array();
         array_push($pathologies_array['data'], ...$row);
