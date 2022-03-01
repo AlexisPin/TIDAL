@@ -20,19 +20,22 @@ $Smarty->setTemplateDir(MAIN_PATH . '/template');
 
 $uri = $_SERVER['REQUEST_URI'];
 require 'elements/navbar.php';
-
 switch ($uri) {
-   case '/?filter':
-      require 'template/filter.php';
+   case '/':
+      require 'template/home.php';
       break;
    case '/?login':
-      require 'template/login.php';
+      if ($flag_connexion) {
+         header('Location: /');
+      } else {
+         require 'template/login.php';
+      }
       break;
    case '/?search':
       if ($flag_connexion) {
          require 'template/search.php';
       } else {
-         require 'template/login.php';
+         header('Location: /?login');
       }
       break;
    case '/?signup':
@@ -47,8 +50,11 @@ switch ($uri) {
    case '/?bibliographie':
       require 'template/bibliographie.php';
       break;
+   case '/?pathologie':
+      require 'template/pathologie.php';
+      break;
    default:
-      require 'template/filter.php';
+      require 'template/home.php';
       break;
 }
 require_once 'elements/footer.php';

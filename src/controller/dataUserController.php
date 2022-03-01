@@ -5,6 +5,7 @@ $username = "";
 $errors = array();
 $succes = array();
 
+
 //if user signup button
 if (isset($_POST['signup'])) {
     $username = $_POST['username'];
