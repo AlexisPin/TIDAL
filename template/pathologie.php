@@ -1,15 +1,6 @@
 <?php
-include_once '../models/Pathologie.php';
-require_once '../config/Database.php';
-require_once '../elements/header.php';
-function console_log($data)
-{
-    echo '<script>';
-    echo 'console.log(' . json_encode($data) . ')';
-    echo '</script>';
-}
-$database = new Database();
-$dbh = $database->connect();
+
+
 $pathologie = new Pathologie($dbh);
 
 $pathologie->id = intval($_GET["id"]);
@@ -28,8 +19,3 @@ $symptomes = explode("-", $result['symptome']);
 
     </div>
 </div>
-
-<?php
-require_once '../elements/footer.php';
-
-?>

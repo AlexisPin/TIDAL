@@ -13,7 +13,7 @@ require 'src/controller/searchResult.php';
     <?php
     foreach ($result as $patho) {
     ?>
-        <a href='/template/pathologie.php?id=<?= strval($patho['id']); ?>'>
+        <a href='/?pathologie&id=<?= strval($patho['id']); ?>'>
             <div class="patho">
                 <h4><?= $patho['pathologie']; ?></h4>
                 <p>Méridien : <?= $patho['meridien']; ?></p>

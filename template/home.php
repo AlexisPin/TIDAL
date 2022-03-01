@@ -67,7 +67,7 @@ $pathologie = new Pathologie($dbh);
         $pathologies_data = $pathologie->filtre();
         foreach ($pathologies_data as $pathologie_data) {
     ?>
-            <a href='pathologie.php?id=<?= strval($pathologie_data['id']); ?>'>
+            <a href='/?pathologie&id=<?= strval($pathologie_data['id']); ?>'>
                 <div class="patho">
                     <h4><?= $pathologie_data['pathologie']; ?></h4>
                     <p><?= $pathologie_data['meridien']; ?></p>
@@ -79,7 +79,7 @@ $pathologie = new Pathologie($dbh);
         $pathologies_data = $pathologie->read();
         foreach ($pathologies_data as $pathologie_data) {
         ?>
-            <a href='/template/pathologie.php?id=<?= strval($pathologie_data['id']); ?>'>
+            <a href='/?pathologie&id=<?= strval($pathologie_data['id']); ?>'>
                 <div class="patho">
                     <h4><?= $pathologie_data['pathologie']; ?></h4>
                     <p>Méridien : <?= $pathologie_data['meridien']; ?></p>

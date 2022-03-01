@@ -12,6 +12,10 @@ require_once 'models/Pathologie.php';
 $database = new Database();
 $dbh = $database->connect();
 
+if (isset($_GET['id'])) {
+   $pathoId = $_GET['id'];
+}
+
 require_once 'elements/header.php';
 
 define('MAIN_PATH', getcwd());
@@ -56,7 +60,7 @@ switch ($uri) {
    case '/?bibliographie':
       require 'template/bibliographie.php';
       break;
-   case '/?pathologie':
+   case '/?pathologie&id=' . $pathoId:
       require 'template/pathologie.php';
       break;
    default:
