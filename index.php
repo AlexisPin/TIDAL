@@ -9,6 +9,7 @@ function console_log($data)
 include_once 'config/Database.php';
 include_once 'models/Pathologie.php';
 
+
 $database = new Database();
 $dbh = $database->connect();
 

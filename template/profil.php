@@ -1,5 +1,5 @@
 <?php
-require_once "dataUserController.php";
+
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
 

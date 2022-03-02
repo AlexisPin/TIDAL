@@ -6,9 +6,9 @@
         $users = $dbh->prepare($sql);
         $users->execute(array(':username' => $_COOKIE["Username"], ':useruniqueid' => $_COOKIE["UserUniqueID"]));
         $users_data = $users->fetch();
-    }
-    if ($users_data) {
-        $flag_connexion = true;
+        if ($users_data) {
+            $flag_connexion = true;
+        }
     }
     ?>
     <input type="checkbox" id="check">
