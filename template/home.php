@@ -103,7 +103,7 @@ $pathologie = new Pathologie($dbh);
     const typeSelect = document.getElementById('type-select');
     const caracteristiqueSelect = document.getElementById('caracteristique-select');
 
-    const combinations = {
+    const meridiensCombinations = {
         "P": [
             ['m', 'l', 'j', 'tf'],
             ['e', 'i', 'p', 'v', 'c', 'f']
@@ -116,13 +116,13 @@ $pathologie = new Pathologie($dbh);
             ['m', 'l', 'j', 'tf'],
             ['e', 'i', 'p', 'v', 'c', 'f']
         ],
-        "RTe": [
+        "Rte": [
             ['m', 'l', 'j', 'tf'],
             ['e', 'i', 'p', 'v', 'c', 'f']
         ],
         "C": [
             ['m', 'l', 'j', 'tf'],
-            ['e', 'i', 'p', 'v', 'c', 'f']
+            ['e', 'i', 'p', 'v']
         ],
         "IG": [
             ['m', 'l', 'j', 'tf'],
@@ -134,7 +134,7 @@ $pathologie = new Pathologie($dbh);
         ],
         "R": [
             ['m', 'l', 'j', 'tf'],
-            ['e', 'i', 'p', 'v', 'c', 'f']
+            ['e', 'i', 'p', 'v']
         ],
         "MC": [
             ['m', 'l', 'j', 'tf'],
@@ -162,28 +162,76 @@ $pathologie = new Pathologie($dbh);
         ],
         "ChM": [
             ['mv'],
-            []
+            ['']
         ],
         "DaiM": [
             ['mv'],
-            []
+            ['']
         ],
         "+QM": [
             ['mv'],
-            []
+            ['']
         ],
         "-QM": [
             ['mv'],
-            []
+            ['']
         ],
         "-WM": [
             ['mv'],
-            []
+            ['']
         ],
         "+WM": [
             ['mv'],
-            []
+            ['']
         ],
+    }
+    const typesCombinations = {
+        'm': [
+            ['P', 'GI', 'E', 'Rte', 'C', 'IG', 'V', 'R', 'MC', 'TR', 'VB', 'F'],
+            ['e', 'i']
+        ],
+        'tf': [
+            ['P', 'GI', 'E', 'Rte', 'C', 'IG', 'V', 'R', 'MC', 'TR', 'VB', 'F'],
+            ['p', 'v', 'c', 'f']
+        ],
+        'l': [
+            ['P', 'GI', 'E', 'Rte', 'C', 'IG', 'V', 'R', 'MC', 'TR', 'VB', 'F', 'DM', 'RM'],
+            ['p', 'v']
+        ],
+        'mv': [
+            ["DM", "RM", "ChM", "DaiM", "+QM", "-QM", "-WM", "+WM"],
+            ['']
+        ],
+        'j': [
+            ['P', 'GI', 'E', 'Rte', 'C', 'IG', 'V', 'R', 'MC', 'TR', 'VB', 'F'],
+            ['']
+        ]
+    }
+    const caracterisitiquesCombinations = {
+        'p': [
+            ['P', 'GI', 'E', 'Rte', 'C', 'IG', 'V', 'R', 'MC', 'TR', 'VB', 'F', 'DM', 'RM'],
+            ['l', 'tf']
+        ],
+        'c': [
+            ['P', 'GI', 'E', 'Rte', 'IG', 'V', 'MC', 'TR', 'VB', 'F'],
+            ['tf']
+        ],
+        'v': [
+            ['P', 'GI', 'E', 'Rte', 'C', 'IG', 'V', 'R', 'MC', 'TR', 'VB', 'F', 'DM', 'RM'],
+            ['l', 'tf']
+        ],
+        'f': [
+            ['P', 'GI', 'E', 'Rte', 'IG', 'V', 'MC', 'TR', 'VB', 'F'],
+            ['tf']
+        ],
+        'i': [
+            ['P', 'GI', 'E', 'Rte', 'C', 'IG', 'V', 'R', 'MC', 'TR', 'VB', 'F'],
+            ['m']
+        ],
+        'e': [
+            ['P', 'GI', 'E', 'Rte', 'C', 'IG', 'V', 'R', 'MC', 'TR', 'VB', 'F'],
+            ['m']
+        ]
     }
 
     resetBtn.addEventListener('click', () => {
@@ -192,57 +240,61 @@ $pathologie = new Pathologie($dbh);
         caracteristiqueSelect.selectedIndex = -1;
     });
 
-    meridienSelectOptions.forEach((optionMeridien) => {
-        optionMeridien.addEventListener('click', (e) => {
-            switch (e.target.value) {
-                case 'DM': {
-                    typeSelectOptions.forEach((optionType) => {
-                        if (optionType.value != 'mv' && optionType.value != 'l') optionType.disabled = true;
-                    })
-                    caracteristiqueSelectOptions.forEach((optionCaracteristique) => {
-                        optionCaracteristique.disabled = true;
-                    });
+    (function() {
+        meridienSelect.addEventListener('change', (e) => {
 
-                };
-            case 'RM':
-
-            }
+            currentMeridien = meridiensCombinations[e.target.value];
+            typeSelectOptions.forEach((optionType) => {
+                if (!currentMeridien[0].includes(optionType.value)) {
+                    optionType.disabled = true;
+                    optionType.selected = false;
+                } else optionType.disabled = false;
+            })
+            caracteristiqueSelectOptions.forEach((optionCaracteristique) => {
+                if (!currentMeridien[1].includes(optionCaracteristique.value)) {
+                    optionCaracteristique.disabled = true;
+                    optionCaracteristique.selected = false;
+                } else optionCaracteristique.disabled = false;
+            });
         });
-    });
+        typeSelect.addEventListener('change', (e) => {
 
-    typeSelectOptions.forEach((optionMeridien) => {
-        optionMeridien.addEventListener('click', (e) => {
-            switch (e.target.value) {
-                case 'DM': {
-                    typeSelectOptions.forEach((optionType) => {
-                        if (optionType.value != 'mv' && optionType.value != 'l') optionType.disabled = true;
-                    })
-                    caracteristiqueSelectOptions.forEach((optionCaracteristique) => {
-                        optionCaracteristique.disabled = true;
-                    });
+            currentType = typesCombinations[e.target.value];
+            meridienSelectOptions.forEach((optionMeridien) => {
+                if (!currentType[0].includes(optionMeridien.value)) {
+                    optionMeridien.disabled = true;
+                    optionMeridien.selected = false;
+                } else optionMeridien.disabled = false;
 
-                };
-            case 'RM':
 
-            }
+            })
+            caracteristiqueSelectOptions.forEach((optionCaracteristique) => {
+                if (!currentType[1].includes(optionCaracteristique.value)) {
+                    optionCaracteristique.disabled = true;
+                    optionCaracteristique.selected = false;
+                } else optionCaracteristique.disabled = false;
+
+            });
         });
-    });
 
-    caracteristiqueSelectOptions.forEach((optionMeridien) => {
-        optionMeridien.addEventListener('click', (e) => {
-            switch (e.target.value) {
-                case 'DM': {
-                    typeSelectOptions.forEach((optionType) => {
-                        if (optionType.value != 'mv' && optionType.value != 'l') optionType.disabled = true;
-                    })
-                    caracteristiqueSelectOptions.forEach((optionCaracteristique) => {
-                        optionCaracteristique.disabled = true;
-                    });
+        caracteristiqueSelect.addEventListener('change', (e) => {
 
-                };
-            case 'RM':
+            currentCaracteristique = caracterisitiquesCombinations[e.target.value];
+            meridienSelectOptions.forEach((optionMeridien) => {
+                if (!currentCaracteristique[0].includes(optionMeridien.value)) {
+                    optionMeridien.disabled = true;
+                    optionMeridien.selected = false;
+                } else optionMeridien.disabled = false;
 
-            }
+
+            })
+            typeSelectOptions.forEach((optionType) => {
+                if (!currentCaracteristique[1].includes(optionType.value)) {
+                    optionType.disabled = true;
+                    optionType.selected = false;
+                } else optionType.disabled = false;
+
+            });
         });
-    });
+    })()
 </script>
