@@ -7,7 +7,7 @@ function console_log($data)
    echo '</script>';
 }
 include_once 'config/Database.php';
-include_once 'models/Pathologie.php';
+include_once 'src/models/Pathologie.php';
 
 
 $database = new Database();
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
    $pathoId = $_GET['id'];
 }
 
-require_once 'elements/header.php';
+require_once 'src/components/header.php';
 
 define('MAIN_PATH', getcwd());
 require(MAIN_PATH . '/inc/smarty-4.0.4/libs/Smarty.class.php');
@@ -25,7 +25,7 @@ $Smarty = new Smarty();
 $Smarty->setTemplateDir(MAIN_PATH . '/template');
 
 $uri = $_SERVER['REQUEST_URI'];
-require 'elements/navbar.php';
+require 'src/components/navbar.php';
 switch ($uri) {
    case '/':
       require 'template/home.php';
@@ -68,5 +68,5 @@ switch ($uri) {
       header('Location: /');
       break;
 }
-require_once 'elements/footer.php';
+require_once 'src/components/footer.php';
 $dbh = null;
