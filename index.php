@@ -6,8 +6,8 @@ function console_log($data)
    echo 'console.log(' . json_encode($data) . ')';
    echo '</script>';
 }
-require_once 'config/Database.php';
-require_once 'models/Pathologie.php';
+include_once 'config/Database.php';
+include_once 'models/Pathologie.php';
 
 $database = new Database();
 $dbh = $database->connect();

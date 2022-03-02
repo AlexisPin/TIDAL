@@ -58,6 +58,7 @@ class Pathologie
         $query = "SELECT   t1.nom as meridien, t2.desc as pathologie FROM meridien t1 LEFT JOIN patho t2 ON t2.mer = t1.code ";
         $current_condition = [isset($_POST['meridien']), isset($_POST['type']), isset($_POST['caracteristique'])];
         $conditions = [[false, false, true], [false, true, false], [false, true, true], [true, false, false], [true, false, true], [true, true, false], [true, true, true]];
+        $data = [];
         switch ($current_condition) {
             case $conditions[0]:
                 $filterChecked = $_POST['caracteristique'];
@@ -68,9 +69,9 @@ class Pathologie
                     $pathos_meridiens = $this->conn->prepare($query);
                     $pathos_meridiens->execute(array(':caract' => "%$type_filter%"));
                     $pathos_meridiens_data = $pathos_meridiens->fetchAll();
-
-                    return $pathos_meridiens_data;
+                    $data = array_merge($pathos_meridiens_data, $data);
                 }
+                return $data;
                 break;
             case $conditions[1]:
                 $filterChecked = $_POST['type'];
@@ -81,9 +82,9 @@ class Pathologie
                     $pathos_meridiens = $this->conn->prepare($query);
                     $pathos_meridiens->execute(array(':types' => "$type_filter%"));
                     $pathos_meridiens_data = $pathos_meridiens->fetchAll();
-
-                    return $pathos_meridiens_data;
+                    $data = array_merge($pathos_meridiens_data, $data);
                 }
+                return $data;
                 break;
             case $conditions[2]:
                 $specified_query = "WHERE t2.type LIKE (:comb) GROUP BY pathologie,meridien;";
@@ -111,14 +112,14 @@ class Pathologie
                     $pathos_meridiens = $this->conn->prepare($query);
                     $pathos_meridiens->execute([':meridiens' => "$type_filter"]);
                     $pathos_meridiens_data = $pathos_meridiens->fetchAll();
-                    return $pathos_meridiens_data;
+                    $data = array_merge($pathos_meridiens_data, $data);
                 }
+                return $data;
                 break;
             case $conditions[4]:
                 $filterChecked = [$_POST['meridien'], $_POST['caracteristique']];
                 $specified_query = "WHERE t2.mer IN (:meridiens) AND t2.type LIKE (:caract) GROUP BY pathologie,meridien;";
-                $query .= $specified_query;
-                $data = [];
+                $query .= $specified_query;;
                 foreach ($filterChecked[0] as $each_meridien) {
                     foreach ($filterChecked[1] as $each_caract) {
                         $pathos_meridiens = $this->conn->prepare($query);
@@ -134,7 +135,6 @@ class Pathologie
                 $filterChecked = [$_POST['meridien'], $_POST['type']];
                 $specified_query = "WHERE t2.mer IN (:meridiens) AND t2.type LIKE (:types)  GROUP BY pathologie,meridien;";
                 $query .= $specified_query;
-                $data = [];
                 foreach ($filterChecked[0] as $each_meridien) {
                     foreach ($filterChecked[1] as $each_type) {
 
@@ -151,7 +151,6 @@ class Pathologie
                 $specified_query = "WHERE t2.mer IN (:meridiens) AND t2.type LIKE (:comb)  GROUP BY pathologie,meridien;";
                 $query .= $specified_query;
                 $combinaisons = [];
-                $data = [];
                 foreach ($_POST['type'] as $each_types) {
                     for ($i = 0; $i < sizeof($_POST['caracteristique']); $i++) {
                         $combinaisons[] = $each_types . $_POST['caracteristique'][$i];
