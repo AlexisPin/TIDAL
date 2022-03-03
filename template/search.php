@@ -2,6 +2,16 @@
     <form action="?search" method="POST">
         <input type="search" name="search" placeholder="Rechercher une pathologie ...">
         <input type="submit" name="submit-search" value="Rechercher">
+        <div class="radio-container">
+            <input type="radio" name="select" id="keyword" checked>
+            <label for="keyword" class="option keyword">
+                <span>Mots clés</span>
+            </label>
+            <input type="radio" name="select" id="symptome">
+            <label for="symptome" class="option symptome">
+                <span>Symptome</span>
+            </label>
+        </div>
     </form>
 </div>
 
@@ -15,7 +25,7 @@ require 'src/controller/searchResult.php';
     ?>
         <a href='/?pathologie&id=<?= strval($patho['id']); ?>'>
             <div class="patho">
-                <h4><?= $patho['pathologie']; ?></h4>
+                <h4>Pathologie : <?= $patho['pathologie']; ?></h4>
                 <p>Méridien : <?= $patho['meridien']; ?></p>
             </div>
         </a>

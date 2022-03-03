@@ -70,8 +70,8 @@ $pathologie = new Pathologie($dbh);
     ?>
             <a href='/?pathologie&id=<?= strval($pathologie_data['id']); ?>'>
                 <div class="patho">
-                    <h4><?= $pathologie_data['pathologie']; ?></h4>
-                    <p><?= $pathologie_data['meridien']; ?></p>
+                    <h4>Pathologie : <?= $pathologie_data['pathologie']; ?></h4>
+                    <p>Méridien : <?= $pathologie_data['meridien']; ?></p>
                 </div>
             </a>
         <?php
@@ -82,7 +82,7 @@ $pathologie = new Pathologie($dbh);
         ?>
             <a href='/?pathologie&id=<?= strval($pathologie_data['id']); ?>'>
                 <div class="patho">
-                    <h4><?= $pathologie_data['pathologie']; ?></h4>
+                    <h4>Pathologie : <?= $pathologie_data['pathologie']; ?></h4>
                     <p>Méridien : <?= $pathologie_data['meridien']; ?></p>
                 </div>
             </a>
