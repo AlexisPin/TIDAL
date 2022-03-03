@@ -240,61 +240,38 @@ $pathologie = new Pathologie($dbh);
         caracteristiqueSelect.selectedIndex = -1;
     });
 
-    (function() {
-        meridienSelect.addEventListener('change', (e) => {
+    const setSelectOptions = (selectA, selectB, currentSelect) => {
+        selectA.forEach((optionA) => {
+            if (!currentSelect[0].includes(optionA.value)) {
+                optionA.disabled = true;
+                optionA.selected = false;
+            } else optionA.disabled = false;
 
-            currentMeridien = meridiensCombinations[e.target.value];
-            typeSelectOptions.forEach((optionType) => {
-                if (!currentMeridien[0].includes(optionType.value)) {
-                    optionType.disabled = true;
-                    optionType.selected = false;
-                } else optionType.disabled = false;
-            })
-            caracteristiqueSelectOptions.forEach((optionCaracteristique) => {
-                if (!currentMeridien[1].includes(optionCaracteristique.value)) {
-                    optionCaracteristique.disabled = true;
-                    optionCaracteristique.selected = false;
-                } else optionCaracteristique.disabled = false;
-            });
+
+        })
+        selectB.forEach((optionB) => {
+            if (!currentSelect[1].includes(optionB.value)) {
+                optionB.disabled = true;
+                optionB.selected = false;
+            } else optionB.disabled = false;
+
         });
-        typeSelect.addEventListener('change', (e) => {
+    }
 
-            currentType = typesCombinations[e.target.value];
-            meridienSelectOptions.forEach((optionMeridien) => {
-                if (!currentType[0].includes(optionMeridien.value)) {
-                    optionMeridien.disabled = true;
-                    optionMeridien.selected = false;
-                } else optionMeridien.disabled = false;
+    meridienSelect.addEventListener('change', (e) => {
+        currentMeridien = meridiensCombinations[e.target.value];
+        setSelectOptions(typeSelectOptions, caracteristiqueSelectOptions, currentMeridien)
 
+    });
 
-            })
-            caracteristiqueSelectOptions.forEach((optionCaracteristique) => {
-                if (!currentType[1].includes(optionCaracteristique.value)) {
-                    optionCaracteristique.disabled = true;
-                    optionCaracteristique.selected = false;
-                } else optionCaracteristique.disabled = false;
+    typeSelect.addEventListener('change', (e) => {
+        currentType = typesCombinations[e.target.value];
+        setSelectOptions(meridienSelectOptions, caracteristiqueSelectOptions, currentType)
 
-            });
-        });
+    });
 
-        caracteristiqueSelect.addEventListener('change', (e) => {
-
-            currentCaracteristique = caracterisitiquesCombinations[e.target.value];
-            meridienSelectOptions.forEach((optionMeridien) => {
-                if (!currentCaracteristique[0].includes(optionMeridien.value)) {
-                    optionMeridien.disabled = true;
-                    optionMeridien.selected = false;
-                } else optionMeridien.disabled = false;
-
-
-            })
-            typeSelectOptions.forEach((optionType) => {
-                if (!currentCaracteristique[1].includes(optionType.value)) {
-                    optionType.disabled = true;
-                    optionType.selected = false;
-                } else optionType.disabled = false;
-
-            });
-        });
-    })()
+    caracteristiqueSelect.addEventListener('change', (e) => {
+        currentCaracteristique = caracterisitiquesCombinations[e.target.value];
+        setSelectOptions(meridienSelectOptions, typeSelectOptions, currentCaracteristique)
+    });
 </script>
