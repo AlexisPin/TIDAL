@@ -7,7 +7,7 @@ class Pathologie
     public $keyword;
     public $meridien;
     public $type;
-    public $caracteritique;
+    public $caracteristique;
     public $id;
 
 
@@ -56,12 +56,12 @@ class Pathologie
     public function filtre()
     {
         $query = "SELECT   t1.nom as meridien, t2.desc as pathologie, t2.idP as id  FROM meridien t1 LEFT JOIN patho t2 ON t2.mer = t1.code ";
-        $current_condition = [isset($_POST['meridien']), isset($_POST['type']), isset($_POST['caracteristique'])];
+        $current_condition = [$this->meridien, $this->type, $this->caracteristique];
         $conditions = [[false, false, true], [false, true, false], [false, true, true], [true, false, false], [true, false, true], [true, true, false], [true, true, true]];
         $data = [];
         switch ($current_condition) {
             case $conditions[0]:
-                $filterChecked = $_POST['caracteristique'];
+                $filterChecked = $this->caracteristique;
                 $specified_query =  "WHERE t2.type LIKE :caract GROUP BY pathologie,meridien,id;";
                 $query .= $specified_query;
                 foreach ($filterChecked as $type_filter) {
@@ -74,7 +74,7 @@ class Pathologie
                 return $data;
                 break;
             case $conditions[1]:
-                $filterChecked = $_POST['type'];
+                $filterChecked = $this->type;
                 $specified_query =  "WHERE t2.type LIKE (:types) GROUP BY pathologie,meridien,id;";
                 $query .= $specified_query;
                 foreach ($filterChecked as $type_filter) {
@@ -91,9 +91,9 @@ class Pathologie
                 $query .= $specified_query;
                 $combinaisons = array();
                 $data = [];
-                foreach ($_POST['type'] as $each_types) {
-                    for ($i = 0; $i < sizeof($_POST['caracteristique']); $i++) {
-                        $combinaisons[] = $each_types . $_POST['caracteristique'][$i];
+                foreach ($this->type as $each_types) {
+                    for ($i = 0; $i < sizeof($this->caracteristique); $i++) {
+                        $combinaisons[] = $each_types . $this->caracteristique[$i];
                     }
                 }
                 foreach ($combinaisons as $combinaison) {
@@ -105,7 +105,7 @@ class Pathologie
                 return $data;
                 break;
             case $conditions[3]:
-                $filterChecked = $_POST['meridien'];
+                $filterChecked = $this->meridien;
                 $specified_query =  " WHERE t2.mer IN (:meridiens) GROUP BY pathologie,meridien,id;";
                 $query .= $specified_query;
                 foreach ($filterChecked as $type_filter) {
@@ -117,7 +117,7 @@ class Pathologie
                 return $data;
                 break;
             case $conditions[4]:
-                $filterChecked = [$_POST['meridien'], $_POST['caracteristique']];
+                $filterChecked = [$this->meridien, $this->caracteristique];
                 $specified_query = "WHERE t2.mer IN (:meridiens) AND t2.type LIKE (:caract) GROUP BY pathologie,meridien,id;";
                 $query .= $specified_query;;
                 foreach ($filterChecked[0] as $each_meridien) {
@@ -131,8 +131,7 @@ class Pathologie
                 return $data;
                 break;
             case $conditions[5]:
-
-                $filterChecked = [$_POST['meridien'], $_POST['type']];
+                $filterChecked = [$this->meridien, $this->type];
                 $specified_query = "WHERE t2.mer IN (:meridiens) AND t2.type LIKE (:types)  GROUP BY pathologie,meridien,id;";
                 $query .= $specified_query;
                 foreach ($filterChecked[0] as $each_meridien) {
@@ -147,13 +146,13 @@ class Pathologie
                 return $data;
                 break;
             case $conditions[6]:
-                $filterChecked = [$_POST['meridien'], $_POST['type'], $_POST['caracteristique']];
+                $filterChecked = [$this->meridien, $this->type, $this->caracteristique];
                 $specified_query = "WHERE t2.mer IN (:meridiens) AND t2.type LIKE (:comb)  GROUP BY pathologie,meridien,id;";
                 $query .= $specified_query;
                 $combinaisons = [];
-                foreach ($_POST['type'] as $each_types) {
-                    for ($i = 0; $i < sizeof($_POST['caracteristique']); $i++) {
-                        $combinaisons[] = $each_types . $_POST['caracteristique'][$i];
+                foreach ($this->type as $each_types) {
+                    for ($i = 0; $i < sizeof($this->caracteristique); $i++) {
+                        $combinaisons[] = $each_types . $this->caracteristique[$i];
                     }
                 }
                 foreach ($filterChecked[0] as $each_meridien) {

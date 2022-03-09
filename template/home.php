@@ -65,6 +65,10 @@ $pathologie = new Pathologie($dbh);
 <div class="result">
     <?php
     if (isset($_POST['meridien']) || isset($_POST['type']) || isset($_POST['caracteristique'])) {
+        $pathologie->meridien = isset($_POST['meridien']) ? $_POST['meridien'] : false;
+        $pathologie->type = isset($_POST['type']) ? $_POST['type'] : false;
+        $pathologie->caracteristique = isset($_POST['caracteristique']) ? $_POST['caracteristique'] : false;
+
         $pathologies_data = $pathologie->filtre();
         foreach ($pathologies_data as $pathologie_data) {
     ?>
