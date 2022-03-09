@@ -13,9 +13,10 @@ $db = $database->connect();
 
 $pathologie = new Pathologie($db);
 
-$this->meridien = $_POST['meridien'];
-$this->type = $_POST['type'];
-$this->caracteristique = $_POST['caracteristique'];
+$this->meridien = $_GET['meridien'];
+$this->type = $_GET['type'];
+$this->caracteristique = $_GET['caracteristique'];
+
 $result = $pathologie->filtre();
 $num = count($result);
 if ($num > 0) {
