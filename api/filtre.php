@@ -13,12 +13,11 @@ $db = $database->connect();
 
 $pathologie = new Pathologie($db);
 
-$pathologie->meridien = isset($_GET['meridien']) ? $_GET['meridien'] : false;
-$pathologie->type = isset($_GET['type']) ? $_GET['type'] : false;
-$pathologie->caracteristique = isset($_GET['caracteristique']) ? $_GET['caracteristique'] : false;
+$pathologie->meridien = isset($_GET['meridien']) ? explode(',', $_GET['meridien']) : false;
+$pathologie->type = isset($_GET['type']) ? explode(',', $_GET['type']) : false;
+$pathologie->caracteristique = isset($_GET['caracteristique']) ? explode(',', $_GET['caracteristique']) : false;
 
 $result = $pathologie->filtre();
-var_dump($result);
 $num = count($result);
 if ($num > 0) {
     $row = $result;

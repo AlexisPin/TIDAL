@@ -318,23 +318,3 @@ input[type="radio"] {
   transform: translate(-50%, -50%);
   position: absolute;
 }
-
-/**************** Page de pathologie unique ********************/
-
-.symptome-container {
-  position: absolute;
-  display: flex;
-  flex-flow: wrap row;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-}
-
-.symptome-container p {
-  padding: 5px 15px;
-  border: #db622a solid 2px;
-  background-color: var(--Background_2);
-  opacity: 0.8;
-  color: whitesmoke;
-  border-radius: 10px;
-}
