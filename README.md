@@ -16,6 +16,6 @@ Route  | Methods         | Type | Description |
 
 Mise en place complete de l'API  
 Utilisation des classes User et Pathologie sur tout le code  
-Mise en place de la recherche par symptome ou mot clés au choix 
+Mise en place de la recherche par symptome ou mot clés au choix  
 Page de pathologie unique avec la liste des symptomes associés  
 Relations entre les options de filtrage permettant la sélection uniquement sur les options proposant un résultat  
