@@ -11,7 +11,7 @@ Route  | Methods         | Type | Description |
 | http://127.0.0.1/api/users.php?id={id} | PUT     |    JSON   |    Update a user into the database |
 | http://127.0.0.1/api/users.php?id={id} | DELETE     |    JSON   |    Delete a user from the database |
 | http://127.0.0.1/api/pathologie.php  | GET  |   JSON | Retrieve all pathologies |
-| http://127.0.0.1/api/pathologie?query={keyword}  | GET  |   JSON | Recovering a pathologie by a keyword |
-| http://127.0.0.1/api/pathologie?meridien={meridien}&type={type}&caracteristique={caracteristique}  | GET  |   JSON | Recovering a pathologie by filter options of your choice |
+| http://127.0.0.1/api/pathologie.php?query={keyword}  | GET  |   JSON | Recovering a pathologie by a keyword |
+| http://127.0.0.1/api/filter.php?meridien={meridien}&type={type}&caracteristique={caracteristique}  | GET  |   JSON | Recovering a pathologie by filter options of your choice |
 
 Mise en place complete de l'API 
