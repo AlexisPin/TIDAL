@@ -15,7 +15,7 @@ Route  | Methods         | Type | Description |
 | http://127.0.0.1/api/filter.php?meridien={meridien}&type={type}&caracteristique={caracteristique}  | GET  |   JSON | Recovering a pathologie by filter options of your choice |
 
 Mise en place complete de l'API  
-Utilisation des classes User et Pathologie sur tout le code 
+Utilisation des classes User et Pathologie sur tout le code  
 Mise en place de la recherche par symptome ou mot clés au choix 
 Page de pathologie unique avec la liste des symptomes associés  
 Relations entre les options de filtrage permettant la sélection uniquement sur les options proposant un résultat  
