@@ -3,11 +3,11 @@
         <input type="search" name="search" placeholder="Rechercher une pathologie ...">
         <input type="submit" name="submit-search" value="Rechercher">
         <div class="radio-container">
-            <input type="radio" name="select" id="keyword" checked>
+            <input type="radio" name="select" value="keyword" id="keyword" checked />
             <label for="keyword" class="option keyword">
                 <span>Mots clés</span>
             </label>
-            <input type="radio" name="select" id="symptome">
+            <input type="radio" name="select" value="symptome" id="symptome" />
             <label for="symptome" class="option symptome">
                 <span>Symptome</span>
             </label>

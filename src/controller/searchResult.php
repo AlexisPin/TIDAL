@@ -7,8 +7,12 @@ if (isset($_POST["submit-search"]) && $_POST["search"] != null) {
     $search = trim($search);
     $search = strip_tags($search);
     $search = strtolower($search);
-    $pathologie->keyword = $search;
-    $result = $pathologie->searchByKeyword();
+    $pathologie->research = $search;
+    if ($_POST["select"] == "keyword") {
+        $result = $pathologie->searchByKeyword();
+    } else {
+        $result = $pathologie->searchBySymptome();
+    }
 } else {
     $result = $pathologie->read();
 }
