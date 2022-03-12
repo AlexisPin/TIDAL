@@ -1,4 +1,5 @@
 RewriteEngine On 
 RewriteRule ^users/?$ users.php [L,NC]
+RewriteRule ^pathologie/?$ pathologie.php [L,NC]
 RewriteRule ^[^/]+/(\d+)$ users.php?id=$1
 RewriteRule ^[^/]+/(\d+)$ pathologie.php?id=$1

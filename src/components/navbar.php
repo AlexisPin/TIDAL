@@ -1,6 +1,6 @@
 <nav>
     <?php
-    $flag_connexion = true;
+    $flag_connexion = false;
     if (isset($_COOKIE["Username"])) {
         $sql = "SELECT * FROM public.users t1 WHERE t1.username = :username AND t1.useruniqueid = :useruniqueid;";
         $users = $dbh->prepare($sql);
